@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+body{
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+:root{
+  --primary-color: #3252DF;
+  --secondary-color: #152C5B;
+  --btn-bg: #003DFC;
+  --btn-color: #FAFAFA;
+  --dark-color: #212529;
+  --placeholder-color:#D2D2D2;
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.term1{
+  color: var(--primary-color);
+  font-weight: 600;
+}
+.term2{
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+.small-text{
+  font-size: .8rem;
+}
+
+.form-control:focus {
+  border-color:var(--placeholder-color);
+  outline: none;
+  box-shadow: none;
+
+}

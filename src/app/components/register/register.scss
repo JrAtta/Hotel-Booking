@@ -1,0 +1,55 @@
+.register-container {
+
+
+  .bg-left {
+    background: url('/images/register.png') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .overlay {
+      background: rgb(255, 255, 255, .7);
+      border-radius: 20px;
+      height: 87%;
+      width: 87%;
+    }
+  }
+
+  .form-right {
+
+    input {
+      border: 2px solid var(--placeholder-color);
+
+      &::placeholder {
+        color: var(--placeholder-color);
+        font-weight: 500;
+      }
+    }
+
+    button[type="submit"] {
+      background: var(--btn-bg);
+      color: var(--btn-color);
+      font-weight: 600;
+      letter-spacing: .8px;
+
+      &:hover {
+        background: var(--primary-color);
+        transition: background .3s ease-in-out;
+      }
+    }
+
+    .login {
+      color: var(--secondary-color);
+    }
+
+
+    @media (max-width: 768px) {
+
+      p{
+        font-size: .8rem;
+      }
+    }
+  }
+}
