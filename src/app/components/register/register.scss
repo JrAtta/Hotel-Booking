@@ -1,10 +1,10 @@
 .register-container {
 
-
   .bg-left {
     background: url('/images/register.png') no-repeat center center;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,10 +15,57 @@
       height: 87%;
       width: 87%;
     }
+
+  }
+  .background-success{
+    padding-inline: 40px;
+    background: url('/images/success-register.png') no-repeat center center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .success-overlay {
+
+      background: rgb(255, 255, 255, .9);
+      border-radius: 20px;
+      height: 350px;
+      width: 720px;
+
+      img{
+        width: 50px;
+      }
+      @media (max-width: 768px) {
+       scale: .9;
+      }
+      @media (max-width: 600px) {
+       width: 100%;
+       padding: 0;
+
+      }
+    }
+    @media (max-width: 600px) {
+     padding: 0;
+
+
+     .main-text{
+      h2{
+        font-size: 22px;
+      }
+      p{
+        font-size: 14px;
+      }
+     }
+     button{
+      scale: .9;
+     }
+    }
   }
 
   .form-right {
 
+    // padding-inline: 80px;
     input {
       border: 2px solid var(--placeholder-color);
 
@@ -28,7 +75,33 @@
       }
     }
 
-    button[type="submit"] {
+    .valid {
+      border: 2px solid green;
+    }
+
+    .invalid {
+      border: 2px solid red;
+    }
+
+
+
+
+
+    .login {
+      color: var(--secondary-color);
+    }
+
+
+    @media (max-width: 768px) {
+
+      p {
+        font-size: .8rem;
+      }
+    }
+  }
+}
+
+   button[type="submit"] {
       background: var(--btn-bg);
       color: var(--btn-color);
       font-weight: 600;
@@ -39,17 +112,3 @@
         transition: background .3s ease-in-out;
       }
     }
-
-    .login {
-      color: var(--secondary-color);
-    }
-
-
-    @media (max-width: 768px) {
-
-      p{
-        font-size: .8rem;
-      }
-    }
-  }
-}

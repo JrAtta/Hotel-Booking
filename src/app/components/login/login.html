@@ -1,1 +1,134 @@
-<p>login works!</p>
+<div class="login-container min-vh-100 overflow-hidden ">
+  <div class="row ">
+    <div class="col-md-6 col-12  ">
+      <div class="bg-left">
+        @if (isMobile$ | async) {
+        <div class="overlay flex-center flex-column p-4" [ngStyle]="{'height': '70%'}">
+          <div class="form-right">
+            <div class="title flex-center fs-1 gap-2 flex-wrap">
+              <div class="term2">Login</div>
+              <div class="term1">Account</div>
+            </div>
+            <!-- <h3 class="text-center fw-semibold">Login Account</h3> -->
+            <form class="" [formGroup]="loginForm" (ngSubmit)="login()">
+              <!-- email field -->
+              <div class="mt-4">
+                <label for="email" class="form-label">E mail</label>
+                <input type="email" [class.valid]="loginForm.get('email')?.valid" class="form-control"
+                  [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+                  formControlName="email" id="email" placeholder="name@gmail.com">
+
+                <!-- @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
+                @if (loginForm.get('email')?.hasError('required')) {
+                <small class="text-danger">Email is required</small>
+                }
+                @if (loginForm.get('email')?.hasError('email')) {
+                <small class="text-danger">Email is invalid</small>
+                }
+                } -->
+              </div>
+
+              <!-- password field -->
+              <div class="mt-4 mb-2 position-relative ">
+                <label for="password" class="form-label">Password</label>
+                <input [type]="isPasswordVisible ? 'text' : 'password'" class="form-control "
+                  [class.valid]="loginForm.get('password')?.valid"
+                  [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                  formControlName="password" id="password" placeholder="6+ characters">
+                <span class="visibility  pointer  " (click)="togglePasswordVisibility()">
+                  <i class="bi" [ngClass]="isPasswordVisible ? 'bi-eye' : 'bi-eye-slash'"></i>
+                </span>
+
+                <!-- @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
+                @if (loginForm.get('password')?.hasError('required')) {
+                <small class="text-danger">Password is required</small>
+                }
+                @if (loginForm.get('password')?.hasError('minlength')) {
+                <small class="text-danger">Password must be at least 6 characters</small>
+                }
+                } -->
+
+                @if ( loginForm.hasError('invalidUser')) {
+                <small class="text-danger">Invalid email or password</small>
+                }
+              </div>
+
+              <div class="mt-4">
+                <p class="small" [ngStyle]="textWrapBalance">
+                  By signing up you agree to <a href="/">terms and conditions</a> at zoho.
+                </p>
+                <button type="submit" class="btn w-100">login</button>
+                <a class="d-block text-center my-3 register" routerLink="/register">Create Account</a>
+              </div>
+            </form>
+          </div>
+        </div>
+        } @else {
+        <div class="overlay flex-center">
+          <div class="title text-center d-flex fs-1">
+            <div class="term1">Lanka</div>
+            <div class="term2">Stay.</div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+    <div class="col-md-6  d-md-block  d-none  ">
+      <div class=" flex-center flex-column  h-100 w-100 pe-3">
+        <div class="form-right   ">
+        <h2 class="text-center  ">Login Account</h2>
+        <form class="mt-3 " [formGroup]="loginForm" (ngSubmit)="login()">
+
+          <!-- email field -->
+          <div class="mt-3">
+            <label for="email" class="form-label">E mail </label>
+            <input type="email" [class.valid]="loginForm.get('email')?.valid" class="form-control"
+              [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="form-control"
+              formControlName="email" id="email" placeholder="name@gmail.com">
+            <!-- @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
+            @if (loginForm.get('email')?.hasError('required')) {
+            <small class="text-danger">Email is required</small>
+            }
+            @if (loginForm.get('email')?.hasError('email')) {
+            <small class="text-danger">Email is invalid</small>
+            }
+            } -->
+          </div>
+
+
+          <!-- password field -->
+          <div class="my-3  position-relative">
+            <label for="password" class="form-label">Password</label>
+            <input [type]="isPasswordVisible ? 'text' : 'password'" class="form-control"
+              [class.valid]="loginForm.get('password')?.valid" class="form-control"
+              [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+              class="form-control" formControlName="password" id="password" placeholder="6+ characters">
+            <span class="visibility  pointer  " (click)="togglePasswordVisibility()">
+              <i class="bi" [ngClass]="isPasswordVisible ? 'bi-eye' : 'bi-eye-slash'"></i>
+            </span>
+            <!-- @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
+            @if (loginForm.get('password')?.hasError('required')) {
+            <small class="text-danger">Password is required</small>
+            }
+            @if (loginForm.get('password')?.hasError('minlength')) {
+            <small class="text-danger">Password must be at least 6 characters</small>
+            }
+            } -->
+          </div>
+          @if ( loginForm.hasError('invalidUser')) {
+          <small class="text-danger">Invalid email or password</small>
+          }
+          <div class="mt-4">
+            <p class="small" [ngStyle]="textWrapBalance">By signing up you agree to <a href="/">terms and
+                conditions</a> at zoho.</p>
+            <button type="submit" class="btn w-100">login</button>
+
+
+            <a class="d-block text-center my-3 register" routerLink="/register">Create Account</a>
+          </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

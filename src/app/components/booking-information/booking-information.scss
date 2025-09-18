@@ -1,0 +1,104 @@
+:host {
+
+  header {
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid var(--placeholder-color);
+  }
+
+  .booking-pages {
+
+    .page {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: #898989;
+      background: #E5E5E5;
+    }
+    .page1:not(:last-child)::after
+    {
+      content: '';
+      position: absolute;
+      height: 1px;
+      background: #E5E5E5;
+      width: 100px;
+      transform: translateX(50%);
+      z-index: -1;
+
+    }
+
+  }
+
+  main{
+
+    .left-section{
+      border-right: 1px solid #E5E5E5;
+      @media (max-width: 768px) {
+        border-right: none;
+      }
+    }
+
+    .days{
+      // width: 60%;
+      background-color: #F5F6F8;
+
+       @media (max-width: 968px) {
+        // width: 100%;
+        transition: width .3s linear;
+
+      }
+    }
+
+    mat-form-field{
+      // width: 60%;
+      // background-color: #F5F6F8;
+      color: hsl(220, 18%, 97%);
+      // width: 100%;
+      @media (max-width: 968px) {
+        // width: 100%;
+        transition: width .3s linear;
+
+
+.left-section{
+      border-right: 1px solid #E5E5E5;
+      @media (max-width: 968px) {
+        border-right: none;
+        border-bottom: 1px solid #E5E5E5;
+        transition: width .3s linear;
+      }
+    }      }
+
+
+    }
+
+      .plus{
+        color: #F5F6F8;
+        background-color: #1ABC9C;
+        &:active{
+          border: none;
+
+        }
+      }
+      .minus{
+        color: #F5F6F8;
+        background-color: #E74C3C;
+        &:active{
+          border: none;
+
+        }
+      }
+
+      .booking-img{
+        // width: 80%;
+        height: 280px;
+
+        // @media (max-width: 968px) {
+        //   height: 200px;
+        //   transition: height .3s linear;
+        // }
+      }
+
+  }
+
+}
