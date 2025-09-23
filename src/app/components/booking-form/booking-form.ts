@@ -24,12 +24,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Subscription } from 'rxjs';
+import { IBookingData } from '../../core/interfaces/IBooking-data';
 
-export interface BookingData {
-  days: number | null;
-  startDate: Date | null;
-  endDate: Date | null;
-}
+
 
 @Component({
   selector: 'app-booking-form',
@@ -54,7 +51,7 @@ export class BookingForm implements OnInit, OnDestroy {
   isLoading = input<boolean>(false);
 
   // Outputs
-  formSubmit = output<BookingData>();
+  formSubmit = output<IBookingData>();
   cancelBooking = output<void>();
 
   bookingInfoForm!: FormGroup;
@@ -186,7 +183,7 @@ export class BookingForm implements OnInit, OnDestroy {
 
   onSubmit(): void {
     if (this.bookingInfoForm.valid) {
-      const bookingData: BookingData = {
+      const bookingData: IBookingData = {
         days: this.days(),
         startDate: this.startDate(),
         endDate: this.endDate(),

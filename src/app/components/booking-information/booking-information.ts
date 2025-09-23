@@ -12,9 +12,12 @@ import { Router } from '@angular/router';
 import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
 
 // Import the child components
-import { BookingData, BookingForm } from '../booking-form/booking-form';
-import { BookingDetails, PaymentData, PaymentForm } from '../payment-form/payment-form';
+import {  BookingForm } from '../booking-form/booking-form';
+import {   PaymentForm } from '../payment-form/payment-form';
 import { SuccessPage } from '../success-page/success-page';
+import { IBookingData } from '../../core/interfaces/IBooking-data';
+import { IbookingDetailes } from '../../core/interfaces/ibooking-detailes';
+import { IpaymentData } from '../../core/interfaces/ipayment-data';
 
 @Component({
   selector: 'app-booking-information',
@@ -37,7 +40,7 @@ export class BookingInformation {
   // State signals
   currentStep: WritableSignal<'booking' | 'payment' | 'success'> = signal('booking');
   isLoading = signal(false);
-  bookingData = signal<BookingData | null>(null);
+  bookingData = signal<IBookingData | null>(null);
 
   // Computed values
   get isBookingStep(): boolean {
@@ -52,7 +55,7 @@ export class BookingInformation {
     return this.currentStep() === 'success';
   }
 
-  get bookingDetails(): BookingDetails | null {
+  get bookingDetails(): IbookingDetailes | null {
     const data = this.bookingData();
     if (!data || !data.days) return null;
 
@@ -65,7 +68,7 @@ export class BookingInformation {
   }
 
   // Event handlers
-  onBookingSubmit(bookingData: BookingData): void {
+  onBookingSubmit(bookingData: IBookingData): void {
     this.isLoading.set(true);
     this.spinner.show();
 
@@ -78,7 +81,7 @@ export class BookingInformation {
     }, 3000);
   }
 
-  onPaymentSubmit(paymentData: PaymentData): void {
+  onPaymentSubmit(paymentData: IpaymentData): void {
     this.isLoading.set(true);
     this.spinner.show();
 

@@ -18,19 +18,12 @@ import {
   ValidationErrors,
   AbstractControl,
 } from '@angular/forms';
+import { IbookingDetailes } from '../../core/interfaces/ibooking-detailes';
+import { IpaymentData } from '../../core/interfaces/ipayment-data';
 
-export interface PaymentData {
-  cardNumber: string;
-  bankName: string;
-  cvv: string;
-  expirationDate: string;
-}
 
-export interface BookingDetails {
-  days: number;
-  totalCost: number;
-  costPerDay: number;
-}
+
+
 
 @Component({
   selector: 'app-payment-form',
@@ -48,11 +41,11 @@ export class PaymentForm implements OnInit {
   private _fb = inject(FormBuilder);
 
   // Inputs
-  bookingDetails = input.required<BookingDetails>();
+  bookingDetails = input.required<IbookingDetailes>();
   isLoading = input<boolean>(false);
 
   // Outputs
-  paymentSubmit = output<PaymentData>();
+  paymentSubmit = output<IpaymentData>();
   cancelPayment = output<void>();
 
   paymentForm!: FormGroup;
@@ -156,7 +149,7 @@ export class PaymentForm implements OnInit {
 
   onSubmit(): void {
     if (this.paymentForm.valid) {
-      const paymentData: PaymentData = this.paymentForm.value;
+      const paymentData: IpaymentData = this.paymentForm.value;
       this.paymentSubmit.emit(paymentData);
     } else {
       this.paymentForm.markAllAsTouched();
