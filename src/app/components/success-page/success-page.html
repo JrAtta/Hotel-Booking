@@ -1,0 +1,17 @@
+<!-- success-page.component.html -->
+<div class="flex-center mt-4 flex-column gap-5">
+  <div class="flex-center p-3 pb-0 success-payment-img">
+    <img src="images/Group1.png" alt="payment Completed" class="w-100">
+  </div>
+
+  <div class="text-center" [ngStyle]="{'color': 'var(--primary-color)', 'text-wrap': 'balance'}">
+    <p class="m-0">Please check your email & phone Message.</p>
+    <p class="m-0">We have sent all the Information</p>
+  </div>
+
+  <button class="btn text-capitalize bg-transparent"
+    [ngStyle]="{'color': 'var(--mute-color)'}"
+    (click)="onGoToDashboard()">
+    go to dashboard
+  </button>
+</div>

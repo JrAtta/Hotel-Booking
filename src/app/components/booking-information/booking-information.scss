@@ -15,6 +15,12 @@
       border-radius: 50%;
       color: #898989;
       background: #E5E5E5;
+
+       @media (max-width:280px) {
+              width: 33px;
+               height: 33px;
+
+      }
     }
     .page1:not(:last-child)::after
     {
@@ -26,6 +32,11 @@
       transform: translateX(50%);
       z-index: -1;
 
+        @media (max-width:280px) {
+
+        width: 90px;
+
+      }
     }
 
   }
@@ -89,6 +100,24 @@
         }
       }
 
+
+      .detailes-booking{
+        padding-left: 220px ;
+        transition: padding-left .3s linear;
+        @media (max-width:1200px) {
+        padding-left: 180px ;
+
+        }
+        @media (max-width:992px) {
+        padding-left: 80px ;
+
+        }
+        @media (max-width:768px) {
+        padding-left: 0px ;
+        border-bottom: 1px solid #E5E5E5;
+          margin-bottom: 20px;
+        }
+      }
       .booking-img{
         // width: 80%;
         height: 280px;
@@ -98,7 +127,33 @@
         //   transition: height .3s linear;
         // }
       }
+      .payment-form{
+        label{
+          color: var(--p-color);
+        }
+        input{
+          background:#F5F6F8;
 
+          &::placeholder{
+            color: var(--placeholder-color);
+          }
+        }
+      }
+
+
+      .success-payment-img{
+        max-width: 400px;
+        object-fit: contain;
+        width: 100%;
+        @media (max-width: 668px) {
+          max-width: 330px;
+          transition: all .3s linear;
+        }
+        @media (max-width: 380px) {
+          max-width: 250px;
+        }
+      }
   }
 
 }
+

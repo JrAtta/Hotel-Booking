@@ -1,0 +1,100 @@
+:host {
+
+
+  .left-section {
+    border-right: 1px solid #E5E5E5;
+
+    @media (max-width: 768px) {
+      border-right: none;
+    }
+  }
+
+  .days {
+    // width: 60%;
+    background-color: #F5F6F8;
+
+    @media (max-width: 968px) {
+      // width: 100%;
+      transition: width .3s linear;
+
+    }
+  }
+
+  mat-form-field {
+    // width: 60%;
+    // background-color: #F5F6F8;
+    color: hsl(220, 18%, 97%);
+
+    // width: 100%;
+    @media (max-width: 968px) {
+      // width: 100%;
+      transition: width .3s linear;
+
+
+      .left-section {
+        border-right: 1px solid #E5E5E5;
+
+        @media (max-width: 968px) {
+          border-right: none;
+          border-bottom: 1px solid #E5E5E5;
+          transition: width .3s linear;
+        }
+      }
+    }
+
+
+  }
+
+  .plus {
+    color: #F5F6F8;
+    background-color: #1ABC9C;
+
+    &:active {
+      border: none;
+
+    }
+  }
+
+  .minus {
+    color: #F5F6F8;
+    background-color: #E74C3C;
+
+    &:active {
+      border: none;
+
+    }
+  }
+
+
+  .detailes-booking {
+    padding-left: 220px;
+    transition: padding-left .3s linear;
+
+    @media (max-width:1200px) {
+      padding-left: 180px;
+
+    }
+
+    @media (max-width:992px) {
+      padding-left: 80px;
+
+    }
+
+    @media (max-width:768px) {
+      padding-left: 0px;
+      border-bottom: 1px solid #E5E5E5;
+      margin-bottom: 20px;
+    }
+  }
+
+  .booking-img {
+    // width: 80%;
+    height: 280px;
+
+    // @media (max-width: 968px) {
+    //   height: 200px;
+    //   transition: height .3s linear;
+    // }
+  }
+
+}

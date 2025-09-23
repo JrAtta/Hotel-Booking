@@ -1,0 +1,51 @@
+ .left-section{
+      border-right: 1px solid #E5E5E5;
+      @media (max-width: 768px) {
+        border-right: none;
+      }
+    }
+ .plus{
+        color: #F5F6F8;
+        background-color: #1ABC9C;
+        &:active{
+          border: none;
+
+        }
+      }
+      .minus{
+        color: #F5F6F8;
+        background-color: #E74C3C;
+        &:active{
+          border: none;
+
+        }
+      }
+       .detailes-booking{
+        padding-left: 220px ;
+        transition: padding-left .3s linear;
+        @media (max-width:1200px) {
+        padding-left: 180px ;
+
+        }
+        @media (max-width:992px) {
+        padding-left: 80px ;
+
+        }
+        @media (max-width:768px) {
+        padding-left: 0px ;
+        border-bottom: 1px solid #E5E5E5;
+          margin-bottom: 20px;
+        }
+      }
+  .payment-form{
+        label{
+          color: var(--p-color);
+        }
+        input{
+          background:#F5F6F8;
+
+          &::placeholder{
+            color: var(--placeholder-color);
+          }
+        }
+      }

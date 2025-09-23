@@ -1,0 +1,113 @@
+<!-- booking-form.component.html -->
+<form [formGroup]="bookingInfoForm" (ngSubmit)="onSubmit()">
+  <div class="row mt-3 py-3 ">
+    <div class="col-md-6 col-sm-12 px-sm-5 ps-md-0 left-section" [ngStyle]="{'border-color': '#E5E5E5'}">
+      <div class="card border-0" [ngStyle]="{'background-color': 'var(--bg-color)'}">
+        <div class="card-img">
+          <img src="images/Booking-pic.png" alt="booking-img" class="booking-img w-100">
+        </div>
+        <div class="card-body pt-2 text-capitalize flex-center justify-content-between">
+          <h6 class="" [ngStyle]="{'color': 'var(--p-color)'}">blue origin farms</h6>
+          <span class="small" [ngStyle]="{'color': 'var(--mute-color)'}">Galle, Sri Lanka</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12 px-sm-5">
+      <div class="days-field">
+        <label for="days" class="mb-3">How long will you stay?</label>
+        <div class="days rounded p-2 text-center small position-relative flex-center col-lg-8 col-md-12">
+          <span class="">{{days() ? days() : '0'}} Day{{days() === 1 ? '' : 's'}}</span>
+
+          <button type="button"
+            class="minus btn btn-sm position-absolute start-0 top-0 h-100 px-3 flex-center fw-bold"
+            (click)="decrease()" [disabled]="days()! <= 1" aria-label="Decrease days">
+            <i class="bi bi-dash"></i>
+          </button>
+
+          <button type="button"
+            class="plus btn btn-sm position-absolute end-0 top-0 h-100 px-3 flex-center fw-bold"
+            (click)="increase()" [disabled]="days()! >= 30" aria-label="Increase days">
+            <i class="bi bi-plus"></i>
+          </button>
+        </div>
+
+        @if (daysControl?.invalid && daysControl?.touched) {
+        <div class="invalid-feedback d-block">
+          <small class="text-danger">
+            @if(daysControl?.errors?.['required']){
+            <span>Please select number of days</span>
+            }
+            @if(daysControl?.errors?.['min']){
+            <span>Minimum stay is 1 day</span>
+            }
+          </small>
+        </div>
+        }
+      </div>
+
+      <div class="date-range-field my-3">
+        <label for="dateRange" class="mb-3 w-100">Pick a Date</label>
+        <mat-form-field appearance="outline" class="mb-1 col-lg-8 col-md-12 col-12">
+          <mat-label>Choose a date range</mat-label>
+          <mat-date-range-input [formGroup]="bookingInfoForm" [rangePicker]="picker" class="">
+            <input matStartDate class="" formControlName="startDate" placeholder="Check-in date">
+            <input matEndDate formControlName="endDate" placeholder="Check-out date">
+          </mat-date-range-input>
+          <mat-hint>Select your arrival and departure dates</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+
+          @if (startDateControl?.hasError('matStartDateInvalid')) {
+          <mat-error>Invalid check-in date</mat-error>
+          }
+          @if (endDateControl?.hasError('matEndDateInvalid')) {
+          <mat-error>Invalid check-out date</mat-error>
+          }
+          @if (startDateControl?.hasError('required')) {
+          <mat-error>Please select check-in date</mat-error>
+          }
+          @if (endDateControl?.hasError('required')) {
+          <mat-error>Please select check-out date</mat-error>
+          }
+          @if( startDateControl?.hasError('invalidDate')) {
+          <mat-error>Check-in date must be in the future</mat-error>
+          }
+        </mat-form-field>
+
+        @if (daysControl?.value || startDateControl?.value && endDateControl?.value) {
+        <button type="button" class="btn btn-outline-danger ms-3" (click)="clearDates()">
+          Reset Dates
+        </button>
+        }
+
+        <div class="mt-3">
+          <p class="text-capitalize fw-light" [ngStyle]="{'color':'var(--mute-color)'}">
+            you will pay
+            <span class="ps-1" [ngStyle]="{'color':'var(--p-color)', 'font-weight': '500'}">
+              {{ totalCost(200) | currency }} USD
+            </span>
+          </p>
+          <p class="text-capitalize fw-light" [ngStyle]="{'color':'var(--mute-color)'}">
+            per<span class="ps-2" [ngStyle]="{'color':'var(--p-color)', 'font-weight': '500'}">
+              {{ days() ? days() : '0' }} day{{ days() === 1 ? '' : 's' }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons flex-center flex-column mt-5 gap-3" role="group">
+      <button type="submit" class="btn text-capitalize text-white py-2 col-md-2 col-sm-5 col-6"
+        [ngStyle]="{'background-color': 'var(--btn-bg)'}" [disabled]="isLoading()">
+        Book Now
+      </button>
+
+      <button type="button" class="btn text-capitalize py-2 col-md-2 col-sm-5 col-6"
+        [ngStyle]="{ 'color': 'var(--mute-color)'}"
+        (click)="onCancel()" [disabled]="isLoading()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

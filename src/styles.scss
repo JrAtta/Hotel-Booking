@@ -6,6 +6,8 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+
+
 html {
   @include mat.theme((
     color: (
@@ -26,7 +28,7 @@ body {
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-surface);
+  // background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   // font: var(--mat-sys-body-medium);
 
@@ -68,21 +70,30 @@ body {
   font-size: .8rem;
 }
 
-.form-control:focus {
-  border-color:var(--placeholder-color);
-  outline: none;
-  box-shadow: none;
+.form-control {
 
-}
-.form-label{
-  &::after{
-    content: '*';
-    color: red;
-    margin-left: 2px;
-      font-size: .9rem;
 
+  &:focus{
+
+    border-color:var(--placeholder-color);
+    outline: none;
+    box-shadow: none;
   }
+  &::placeholder{
+    color: var(--placeholder-color);
+    font-weight: 300;
+  }
+
 }
+// .form-label{
+//   &::after{
+//     content: '*';
+//     color: red;
+//     margin-left: 2px;
+//       font-size: .9rem;
+
+//   }
+// }
 
 .pointer{
   cursor: pointer;

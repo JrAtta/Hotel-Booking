@@ -1,0 +1,126 @@
+<!-- payment-form.component.html -->
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" >
+  <div class="row mt-3 py-3">
+    <div class="col-md-6 col-sm-12 px-sm-5 left-section">
+      <div class="detailes-booking mt-3" [ngStyle]="{'color': 'var(--p-color)'}">
+        <div class="booking-data">
+          Transfer LankaStay:
+          <p class="mt-2 text-capitalize">
+            {{bookingDetails().days}} day{{bookingDetails().days > 1 ? 's' : ''}} at Blue Origin Fams,
+            Galle, Sri Lanka
+          </p>
+        </div>
+        <p class="total-cost">
+          Total: <span class="fw-semibold">{{bookingDetails().totalCost | currency}} USD</span>
+        </p>
+        <p class="costPerDay">
+          Initial Payment: <span class="fw-semibold">{{bookingDetails().costPerDay | currency}}</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12 px-sm-5">
+      <div class="payment-form">
+        <!-- Card Number -->
+        <div class="col-lg-7 col-md-12 mb-3">
+          <label for="card-number" class="form-label text-capitalize font-medium text-gray-700">
+            Card Number
+          </label>
+          <input type="text" class="form-control border-0 p-2" id="card-number" formControlName="cardNumber"
+            placeholder="1234 5678 9012 3456" (input)="formatCardNumber($event)"
+            aria-describedby="cardNumberError">
+
+          @if (paymentForm.get('cardNumber')?.touched && paymentForm.get('cardNumber')?.invalid) {
+          <div class="text-danger small mt-1">
+            @if (paymentForm.get('cardNumber')?.errors?.['required']) {
+            <span>Card number is required</span>
+            }
+            @if (paymentForm.get('cardNumber')?.errors?.['pattern']) {
+            <span>Card number must be 16 digits</span>
+            }
+          </div>
+          }
+        </div>
+
+        <!-- Bank Name -->
+        <div class="col-lg-7 col-md-12 mb-3">
+          <label for="bank-name" class="form-label text-capitalize font-medium text-gray-700">
+            Bank Name
+          </label>
+          <input type="text" class="form-control border-0 p-2" id="bank-name" formControlName="bankName"
+            placeholder="Your bank name" aria-describedby="bankNameError">
+
+          @if(paymentForm.get('bankName')?.touched && paymentForm.get('bankName')?.invalid){
+          <div class="text-danger small mt-1">
+            @if (paymentForm.get('bankName')?.errors?.['required']) {
+            <span>Bank name is required</span>
+            }
+            @if (paymentForm.get('bankName')?.errors?.['minlength']) {
+            <span>Bank name must be at least 2 characters</span>
+            }
+            @if(paymentForm.get('bankName')?.errors?.['maxlength']){
+            <span>Bank name cannot exceed 50 characters</span>
+            }
+          </div>
+          }
+        </div>
+
+        <!-- Expiration Date -->
+        <div class="col-lg-7 col-md-12 mb-3">
+          <label for="expiration-date" class="form-label text-capitalize font-medium text-gray-700">
+            Expiration Date
+          </label>
+          <input type="text" class="form-control border-0 p-2" id="expiration-date"
+            formControlName="expirationDate" placeholder="MM/YY" (input)="formatExpirationDate($event)"
+            aria-describedby="expirationDateError">
+
+          @if (paymentForm.get('expirationDate')?.touched && paymentForm.get('expirationDate')?.invalid) {
+          <div class="text-danger small mt-1">
+            @if(paymentForm.get('expirationDate')?.errors?.['required']){
+            <span>Expiration date is required</span>
+            }
+            @if(paymentForm.get('expirationDate')?.errors?.['pattern']){
+            <span>Format must be MM/YY</span>
+            }
+            @if (paymentForm.get('expirationDate')?.errors?.['expired']) {
+            <span>Card has expired</span>
+            }
+          </div>
+          }
+        </div>
+
+        <!-- CVV -->
+        <div class="col-lg-7 col-md-12">
+          <label for="cvv" class="form-label text-uppercase font-medium text-gray-700">
+            CVV
+          </label>
+          <input type="password" class="form-control border-0 p-2" id="cvv" formControlName="cvv"
+            placeholder="123" aria-describedby="cvvError">
+          @if (paymentForm.get('cvv')?.touched && paymentForm.get('cvv')?.invalid) {
+          <div class="text-danger small mt-1">
+            @if (paymentForm.get('cvv')?.errors?.['required']) {
+            <span>CVV is required</span>
+            }
+            @if (paymentForm.get('cvv')?.errors?.['pattern']) {
+            <span>CVV must be 3 or 4 digits</span>
+            }
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons flex-center flex-column mt-5 gap-3 " role="group">
+    <button type="submit" class="btn text-capitalize text-white py-2 col-md-2 col-sm-5 col-6"
+      [ngStyle]="{'background-color': 'var(--btn-bg)'}" [disabled]="isLoading()">
+      PAY NOW
+    </button>
+
+    <button type="button" class="btn text-capitalize py-2 col-md-2 col-sm-5 col-6"
+      [ngStyle]="{ 'color': 'var(--mute-color)'}"
+      (click)="onCancel()" [disabled]="isLoading()">
+      Cancel
+    </button>
+  </div>
+</form>

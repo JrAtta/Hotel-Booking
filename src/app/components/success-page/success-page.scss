@@ -1,0 +1,12 @@
+  .success-payment-img{
+        max-width: 400px;
+        object-fit: contain;
+        width: 100%;
+        @media (max-width: 668px) {
+          max-width: 330px;
+          transition: all .3s linear;
+        }
+        @media (max-width: 380px) {
+          max-width: 250px;
+        }
+      }
