@@ -93,7 +93,6 @@ export class Home implements OnInit {
     this.data.set(this.hotelData.getData());
     const locations = this.data().map((hotel) => hotel.location);
     this.destinations.set(locations);
-    // console.log(this.destinations());
     this.initializeForm();
   }
 
