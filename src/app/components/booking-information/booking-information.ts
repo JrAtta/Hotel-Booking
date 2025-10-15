@@ -8,7 +8,7 @@ import {
   signal,
   WritableSignal
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
 
 // Import the child components
@@ -18,17 +18,19 @@ import { SuccessPage } from '../success-page/success-page';
 import { IBookingData } from '../../core/interfaces/IBooking-data';
 import { IbookingDetailes } from '../../core/interfaces/ibooking-detailes';
 import { IpaymentData } from '../../core/interfaces/ipayment-data';
+import { Logo } from "../logo/logo";
 
 @Component({
   selector: 'app-booking-information',
   standalone: true,
-  imports:[
+  imports: [
     NgStyle,
     NgxSpinnerComponent,
     BookingForm,
     PaymentForm,
-    SuccessPage
-  ],
+    SuccessPage,
+    Logo
+],
   templateUrl: './booking-information.html',
   styleUrl: './booking-information.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -59,7 +61,7 @@ export class BookingInformation {
     const data = this.bookingData();
     if (!data || !data.days) return null;
 
-    const costPerDay = 200;
+    const costPerDay = 200; // will be dynamic later
     return {
       days: data.days,
       totalCost: costPerDay * data.days,

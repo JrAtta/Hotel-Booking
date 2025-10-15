@@ -130,11 +130,17 @@ export class PaymentForm implements OnInit {
 
   formatCardNumber(event: Event): void {
     const input = event.target as HTMLInputElement;
-    let value = input.value.replace(/\D/g, '');
+    let value = input.value.replace(/\D/g, ''); //
     if (value.length > 16) value = value.slice(0, 16);
     const formatted = value.match(/.{1,4}/g)?.join(' ') || value;
 
     this.paymentForm.get('cardNumber')?.setValue(formatted, { emitEvent: false });
+  }
+  formatBankName(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    let value = input.value.replace(/[^a-zA-Z\s]/g, ''); // Allow only letters and spaces
+    if (value.length > 50) value = value.slice(0, 50);
+    this.paymentForm.get('bankName')?.setValue(value, { emitEvent: false }); // Update the form control without emitting another event
   }
 
   formatExpirationDate(event: Event): void {

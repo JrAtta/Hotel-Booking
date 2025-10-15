@@ -16,7 +16,7 @@
                 <label for="email" class="form-label">E mail</label>
                 <input type="email" [class.valid]="loginForm.get('email')?.valid" class="form-control"
                   [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
-                  formControlName="email" id="email" placeholder="name@gmail.com">
+                id="email"  formControlName="email"  placeholder="name@gmail.com">
 
                 <!-- @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
                 @if (loginForm.get('email')?.hasError('required')) {
@@ -34,7 +34,7 @@
                 <input [type]="isPasswordVisible ? 'text' : 'password'" class="form-control "
                   [class.valid]="loginForm.get('password')?.valid"
                   [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-                  formControlName="password" id="password" placeholder="6+ characters">
+                  id="password"  formControlName="password"  placeholder="6+ characters">
                 <span class="visibility  pointer  " (click)="togglePasswordVisibility()">
                   <i class="bi" [ngClass]="isPasswordVisible ? 'bi-eye' : 'bi-eye-slash'"></i>
                 </span>

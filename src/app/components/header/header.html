@@ -1,0 +1,36 @@
+  <nav class="navbar navbar-expand-lg border-bottom">
+  <div class="container">
+    <a class="navbar-brand" >
+      <app-logo/>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center ">
+        <li class="nav-item ">
+          <a class="nav-link  " routerLink="/home" routerLinkActive="link-active" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/hotel" routerLinkActive="link-active">Hotel</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/rooms" routerLinkActive="link-active"> Rooms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="link-active">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="link-active">Contact</a>
+        </li>
+        <li class="nav-item  me-0">
+        <button class="border-0 bg-transparent w-sm-50 ps-0 btn " >
+          <a class="nav-link text-white rounded px-3 fw-bold  " [ngStyle]="{'background-color': 'var(--btn-bg)','letter-spacing':'.7px'}" routerLink="/login">Login</a>
+        </button>
+
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

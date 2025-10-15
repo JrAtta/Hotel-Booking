@@ -1,0 +1,94 @@
+<div class="container  ">
+  <h5 class="fw-semibold text-capitalize mb-4" [ngStyle]="{'color': 'var(--secondary-color)'}">Most Picked</h5>
+  <!-- hotels card -->
+  <div class="first-row row gy-4 mt-1 ">
+    <div class="col-lg-4  col-md-6 col-sm-12  ">
+      <div class="card  h-100  " [routerLink]="['/hotel-details', mostPicked()[0].id]">
+        <img [src]="mostPicked()[0].imageCover" class=" h-100 w-100" alt="{{mostPicked()[0].name}}">
+        <div class=" card-body position-absolute bottom-0 text-white fw-bold text-capitalize">
+          <h5 class="hotel-name fs-5 fw-semibold  ">{{mostPicked()[0].name}}</h5>
+          <p class="hotel-location  small fw-bold ">{{mostPicked()[0].location}}</p>
+        </div>
+        <div
+          class="top-layer fw-semibold position-absolute end-0 top-0  text-center   text-white  text-lowercase p-2 px-4">
+          <span class="pe-2">{{"$"+mostPicked()[0].costPerDay}}</span> <span class="fw-light">per night</span>
+        </div>
+        <div class="bottom-layer position-absolute start-0 bottom-0 h-50 w-100 bg-outline-secondary ">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12  ">
+      <div class="flex-center flex-column gap-4">
+        @for (hotel of mostPicked().slice(1,3); track $index) {
+        <div class="card  " [routerLink]="['/hotel-details',hotel.id]">
+          <img [src]="hotel.imageCover" class=" " alt="{{hotel.name}}">
+          <div class=" card-body position-absolute bottom-0 text-white fw-bold text-capitalize">
+            <h5 class="hotel-name fs-5 fw-semibold  ">{{hotel.name}}</h5>
+            <p class="hotel-location  small fw-bold ">{{hotel.location}}</p>
+          </div>
+          <div
+            class="top-layer fw-semibold position-absolute end-0 top-0  text-center   text-white  text-lowercase p-2 px-4">
+            <span class="pe-2">{{'$'+hotel.costPerDay}}</span>
+            <span class="fw-light">per night</span>
+          </div>
+          <div class="bottom-layer position-absolute start-0 bottom-0 h-50 w-100 bg-outline-secondary ">
+
+          </div>
+
+
+        </div>
+        }
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12  ">
+      <div class="flex-center flex-column gap-4">
+        @for (hotel of mostPicked().slice(3,5); track $index) {
+          <div class="card " [routerLink]="['/hotel-details',hotel.id]">
+          <img [src]="hotel.imageCover" class="w-100 " alt="{{hotel.name}}">
+          <div class=" card-body position-absolute bottom-0 text-white  text-capitalize">
+            <h5 class="hotel-name fs-5 fw-semibold   ">{{hotel.name}}</h5>
+            <p class="hotel-location  small fw-bold">{{hotel.location}}</p>
+          </div>
+          <div
+            class="top-layer fw-semibold position-absolute end-0 top-0  text-center   text-white  text-lowercase p-2 px-4">
+            <span class="pe-2">{{'$'+hotel.costPerDay}}</span> <span class="fw-light">per night</span>
+          </div>
+          <div class="bottom-layer position-absolute start-0 bottom-0 h-50 w-100 bg-outline-secondary ">
+
+          </div>
+
+
+        </div>
+
+        }
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="second-row row gy-3 " [ngStyle]="{'margin-top':'10rem'}">
+  @for (hotel of hotels(); track $index)
+  {
+      <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="card border-0 h-100" [routerLink]="['/hotel-details',hotel.id]">
+        <img [src]="hotel.imageCover" alt="{{hotel.name}}" class=" object-fit-cover rounded-4">
+        <div class="card-body ps-0 text-start">
+          <div class="title">
+            {{hotel.name}}
+          </div>
+          <div class="location">
+            {{hotel.location}}
+          </div>
+        </div>
+      @if(hotel.isPopularChoice){
+          <div class="top-layer position-absolute end-0 top-0  text-center  small  text-white  text-lowercase p-2 px-4" >
+          <span class="pe-1 fw-semibold">popular</span> <span class="fw-light">choice</span>
+        </div>
+      }
+      </div>
+      </div>
+  }
+  </div>
+</div>

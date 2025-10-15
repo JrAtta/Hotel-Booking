@@ -32,11 +32,22 @@ export const routes: Routes = [
   },
   // booking information
   {
-    path: 'booking page',
+    path: 'booking-page',
     title: 'Booking Page',
     loadComponent: () =>
       import('./components/booking-information/booking-information').then((m) => m.BookingInformation)
   },
+  //hotelDeatailes
+  {
+    // path: 'hotel-details/:name/:location/:description/:imageCover/:images/:costPerDay/:currency/:rating/:isPopularChoice/:roomFeature',
+    path: 'hotel-details/:id',
+    title: 'Hotel Details',
+    loadComponent: () =>
+      import('./components/hotel-detailes/hotel-detailes').then((m) => m.HotelDetailes)
+  }
 
 
 ];
+
+
+

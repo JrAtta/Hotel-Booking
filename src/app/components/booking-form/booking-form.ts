@@ -153,7 +153,7 @@ export class BookingForm implements OnInit, OnDestroy {
   }
 
   increase(): void {
-    if (this.days()! < 30) {
+    if (this.days()! >= 0) {
       this.days.update((prev) => (prev)! + 1);
     }
   }
@@ -199,7 +199,7 @@ export class BookingForm implements OnInit, OnDestroy {
   }
 
   totalCost(costPerDay: number): number {
-    return costPerDay * (this.days() || 0);
+    return costPerDay * (this.days() || 0); // Fallback to 0 if days is null
   }
 
   get daysControl() {

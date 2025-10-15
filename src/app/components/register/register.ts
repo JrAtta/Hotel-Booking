@@ -8,10 +8,11 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { FormData } from '../../core/services/form-data';
+import { Logo } from "../logo/logo";
 
 @Component({
   selector: 'app-register',
-  imports: [NgStyle, RouterLink, ReactiveFormsModule],
+  imports: [NgStyle, RouterLink, ReactiveFormsModule, ],
   templateUrl: './register.html',
   styleUrl: './register.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

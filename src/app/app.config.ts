@@ -13,7 +13,6 @@ import {
 
 import { routes } from './app.routes';
 import {
-  BrowserModule,
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
@@ -30,12 +29,14 @@ export const appConfig: ApplicationConfig = {
       routes,
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
       withHashLocation(),
-      withViewTransitions(),
+      withViewTransitions()
     ),
     provideClientHydration(withEventReplay()),
     provideNativeDateAdapter(), // must be added
 
-    importProvidersFrom(NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),),
+    importProvidersFrom(
+      NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
 
+    ),
   ],
 };
