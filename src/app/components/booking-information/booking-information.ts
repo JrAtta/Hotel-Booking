@@ -1,3 +1,4 @@
+import { HotelData } from './../../core/services/hotel-data';
 
 // booking-information.component.ts
 import { NgStyle } from '@angular/common';
@@ -61,11 +62,14 @@ export class BookingInformation {
     const data = this.bookingData();
     if (!data || !data.days) return null;
 
-    const costPerDay = 200; // will be dynamic later
+    // const costPerDay = data.costPerDay!; // will be dynamic later
     return {
       days: data.days,
-      totalCost: costPerDay * data.days,
-      costPerDay: costPerDay
+      totalCost: data.costPerDay! * data.days,
+      costPerDay: data.costPerDay!,
+      hotelName: data.hotelName!,
+      hotelLocation: data.hotelLocation!,
+      hotelCurrency: data.hotelCurrency!,
     };
   }
 
@@ -107,7 +111,14 @@ export class BookingInformation {
   }
 
   onGoToDashboard(): void {
-    // this.router.navigate(['/dashboard']);
+    this.isLoading.set(true);
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.isLoading.set(false);
+      this.spinner.hide();
+      this.router.navigate(['/home']);
+    }, 3000);
   }
 
   // Helper method to check step completion for progress indicators

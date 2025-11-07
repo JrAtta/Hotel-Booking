@@ -2,13 +2,13 @@
 <form [formGroup]="bookingInfoForm" (ngSubmit)="onSubmit()">
   <div class="row mt-3 py-3 ">
     <div class="col-md-6 col-sm-12 px-sm-5 ps-md-0 left-section" [ngStyle]="{'border-color': '#E5E5E5'}">
-      <div class="card border-0" [ngStyle]="{'background-color': 'var(--bg-color)'}">
+      <div class="card border-0 " [ngStyle]="{'background-color': 'var(--bg-color)'}">
         <div class="card-img">
-          <img src="images/Booking-pic.png" alt="booking-img" class="booking-img w-100">
+          <img [src]="hotel().imageCover" alt="{{hotel().name}}" class="booking-img w-100 rounded">
         </div>
         <div class="card-body pt-2 text-capitalize flex-center justify-content-between">
-          <h6 class="" [ngStyle]="{'color': 'var(--p-color)'}">blue origin farms</h6>
-          <span class="small" [ngStyle]="{'color': 'var(--mute-color)'}">Galle, Sri Lanka</span>
+          <h6 class="" [ngStyle]="{'color': 'var(--p-color)'}">{{hotel().name}}</h6>
+          <span class="small" [ngStyle]="{'color': 'var(--mute-color)'}">{{hotel().location}}</span>
         </div>
       </div>
     </div>
@@ -77,7 +77,7 @@
 
         @if (daysControl?.value || startDateControl?.value && endDateControl?.value) {
         <button type="button" class="btn btn-outline-danger ms-3" (click)="clearDates()">
-          Reset Dates
+          Reset all
         </button>
         }
 
@@ -85,7 +85,7 @@
           <p class="text-capitalize fw-light" [ngStyle]="{'color':'var(--mute-color)'}">
             you will pay
             <span class="ps-1" [ngStyle]="{'color':'var(--p-color)', 'font-weight': '500'}">
-              {{ totalCost(200) | currency }} USD
+              {{ totalCost(hotel().costPerDay)  }} {{hotel().currency}}
             </span>
           </p>
           <p class="text-capitalize fw-light" [ngStyle]="{'color':'var(--mute-color)'}">

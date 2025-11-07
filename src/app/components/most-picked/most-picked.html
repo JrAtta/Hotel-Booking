@@ -72,23 +72,8 @@
   @for (hotel of hotels(); track $index)
   {
       <div class="col-lg-3 col-md-4 col-sm-6">
-      <div class="card border-0 h-100" [routerLink]="['/hotel-details',hotel.id]">
-        <img [src]="hotel.imageCover" alt="{{hotel.name}}" class=" object-fit-cover rounded-4">
-        <div class="card-body ps-0 text-start">
-          <div class="title">
-            {{hotel.name}}
-          </div>
-          <div class="location">
-            {{hotel.location}}
-          </div>
-        </div>
-      @if(hotel.isPopularChoice){
-          <div class="top-layer position-absolute end-0 top-0  text-center  small  text-white  text-lowercase p-2 px-4" >
-          <span class="pe-1 fw-semibold">popular</span> <span class="fw-light">choice</span>
-        </div>
-      }
-      </div>
-      </div>
+      <app-hotel-card [hotel]="hotel" [routerLink]="['/hotel-details',hotel.id]"></app-hotel-card>
+    </div>
   }
   </div>
 </div>

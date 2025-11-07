@@ -1,0 +1,152 @@
+<div class="container  ">
+
+  <!-- <h5 class="text-capitalize fs-5  w-50 pb-2 mb-5" [ngStyle]="{'color': 'var(--secondary-color)', 'border-bottom': ' 1px solid var(--mute-color)'}">activity detailes</h5> -->
+
+    <!-- side title -->
+  <div class="d-flex gap-4 text-capitalize mb-3">
+    <p class="" [ngStyle]="{'color': 'var(--mute-color)'}"   class="pointer">  activity </p><strong
+      [ngStyle]="{'color': 'var(--mute-color)'}">/</strong>
+    <p class="fw-semibold small" [ngStyle]="{'color': 'var(--p-color)'}">activity details</p>
+  </div>
+
+  <!-- Swiper -->
+  <div class="swiper-container ">
+    <swiper-container class="mySwiper" thumbs-swiper=".mySwiper2" loop="true" space-between="10" navigation="true">
+      <swiper-slide>
+        <div class="top-layer ">
+          {{activity().category}}
+        </div>
+        <img [src]="activity().image" alt="{{activity().name}}" />
+        <div class="name-layer">
+          {{activity().name}}
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="top-layer ">
+          {{activity().category}}
+        </div>
+        <img [src]="activity().photos[0]" alt="{{activity().name}}" />
+        <div class="name-layer">
+          {{activity().name}}
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="top-layer ">
+          {{activity().category}}
+        </div>
+        <img [src]="activity().photos[1]" alt="{{activity().name}}" />
+        <div class="name-layer">
+          {{activity().name}}
+        </div>
+      </swiper-slide>
+    </swiper-container>
+
+    <swiper-container class="mySwiper2" space-between="10" free-mode="true" watch-slides-progress="true"
+      slides-per-view="3" loop="true">
+      <swiper-slide>
+        <img [src]="activity().image" alt="{{activity().name}}" />
+      </swiper-slide>
+      <swiper-slide>
+        <img [src]="activity().photos[0]" alt="{{activity().name}}" />
+      </swiper-slide>
+      <swiper-slide>
+        <img [src]="activity().photos[1]" alt="{{activity().name}}" />
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+  <div class="activity-details mt-3">
+
+    <div class="flex-center justify-content-start gap-2 text-capitalize mb-2 " [ngStyle]="{'color': 'var(--p-color)'}">
+      <span class="rate">{{activity().rating}} ⭐</span>|
+      <span class="distance">{{activity().distance}}</span>|
+      <span class="price fw-semibold" [ngStyle]="{'color':'#28a745' }">{{activity().price === 0 ? 'Free Access' : '$' +
+        activity().price + '/' +
+        activity().duration}}</span>
+    </div>
+    <p class="location text-capitalize mb-0">
+      location:
+      <span [ngStyle]="{'color': 'var(--mute-color)', 'text-wrap': 'balance'}">
+        {{activity().location}}
+      </span></p>
+    <p class="description lh-lg ">
+      description:
+      <span [ngStyle]="{'color': 'var(--mute-color)', 'text-wrap': 'balance'}">
+        {{activity().description}}
+      </span>
+    </p>
+    <!-- Button trigger modal -->
+
+    <button class="btn  text-white fw-semibold text-capitalize px-5 p-2 " data-bs-toggle="modal"
+      data-bs-target="#exampleModal" [ngStyle]="{'background-color': 'var(--btn-bg)'}"> Book Now</button>
+
+  </div>
+
+  <div class="customer-reviews mt-5">
+    <h6 class="fw-semibold text-capitalize mb-3" [ngStyle]="{'color': 'var(--p-color)', 'text-wrap': 'balance'}">
+      customer reviews</h6>
+
+    @for (review of activity().reviews; track $index) {
+
+    <div class="customer flex-center gap-4 mb-3 justify-content-start rounded-4 p-2 text-white">
+      <div class="image flex-center p-2  rounded-pill " [ngStyle]="{'background-color': 'var(--primary-color)'}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+          class="icon icon-tabler icons-tabler-filled icon-tabler-user">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+          <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
+        </svg>
+      </div>
+      <div class="flex-center align-items-start flex-column gap-1">
+        <div class="d-flex gap-3" [ngStyle]="{'color': 'var(--p-color)'}">
+          <span class="fw-semibold">{{review.user}}</span>
+          <span class="rate fw-bold ">{{review.rating}} ⭐</span>
+        </div>
+
+        <span class="small text-capitalize" [ngStyle]="{'color': 'var(--dark-color)'}">
+          {{review.comment}}
+        </span>
+
+      </div>
+
+    </div>
+    }
+
+  </div>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header border-0 mb-3">
+          <h1 class="modal-title fs-5 text-capitalize fw-semibold " id="exampleModalLabel">activity booking</h1>
+        </div>
+        <div class="modal-body">
+          <h5 class=" text-capitalize fw-semibold fs-6 mb-3" [ngStyle]="{'color': 'var(--p-color)'}">your reservation</h5>
+          <p class="text-capitalize mb-2 small" [ngStyle]=" {'color':'var(--p-color)'}">activity-no: <span class="ps-2 fw-semibold text-uppercase fs-6 " [ngStyle]=" {'color':'var(--primary-color)'} ">{{generateActNo()}}</span></p>
+          <p class=" text-capitalize mb-2 small" [ngStyle]=" {'color':'var(--p-color)'}">activity name: <span class="ps-2 fw-semibold text-uppercase  " [ngStyle]=" {'color':'var(--primary-color)'} ">{{activity().name}}</span></p>
+          <p class=" text-capitalize mb-2 small" [ngStyle]=" {'color':'var(--p-color)'}">date: <span class="ps-2  text-uppercase  " [ngStyle]=" {'color':'var(--mute-color)'} ">{{ date|date}}</span></p>
+          <hr>
+          <h5 class=" text-capitalize fw-semibold fs-6 mb-3" [ngStyle]="{'color': 'var(--p-color)'}">payment detail</h5>
+          <p class="text-capitalize mb-2 small flex-center justify-content-between" [ngStyle]=" {'color':'var(--p-color)'}">base for: <span class="ps-2 fw-semibold text-uppercase fs-6 " [ngStyle]=" {'color':'var(--dark-color)'} ">{{activity().price === 0 ? 'Free Access' : '$' + activity().price}}</span></p>
+          <p class="text-capitalize mb-2 small flex-center justify-content-between" [ngStyle]=" {'color':'var(--p-color)'}">taxes: <span class="ps-2 fw-semibold text-uppercase fs-6 " [ngStyle]=" {'color':'var(--dark-color)'} "> {{activity().price * 0.1}} $</span></p>
+          <p class="text-capitalize flex-center justify-content-between" [ngStyle]=" {'color':'#28a745'}">total: <span class="ps-2 fw-semibold text-uppercase fs-6 "> {{ activity().price + activity().price * 0.1}} $</span></p>
+          <hr>
+          <h5 class=" text-capitalize fw-semibold fs-6 mb-3" [ngStyle]="{'color': 'var(--p-color)'}">payment</h5>
+          <p class="text-capitalize mb-2 small fw-semibold flex-center justify-content-between"[ngStyle]=" {'color':'var(--p-color)'}">on cash: <span class="ps-2 fw-semibold text-uppercase fs-6 " [ngStyle]=" {'color':'var(dark-color)'} "> {{activity().price + activity().price * 0.1}} $ </span></p>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="returnHome()">Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--  acticities -->
+<div class="">
+  <app-nearby-activities></app-nearby-activities>
+</div>

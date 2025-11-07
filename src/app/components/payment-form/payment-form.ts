@@ -31,7 +31,6 @@ import { IpaymentData } from '../../core/interfaces/ipayment-data';
   imports: [
     NgStyle,
     ReactiveFormsModule,
-    CurrencyPipe,
   ],
   templateUrl: './payment-form.html',
   styleUrl: './payment-form.scss',

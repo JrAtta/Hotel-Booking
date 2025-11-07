@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h5 class="text-capitalize  w-50 pb-2" [ngStyle]="{'color': 'var(--secondary-color)', 'border-bottom': ' 1px solid var(--mute-color)'}">filterad hotels:</h5>
+
+  <div class="row gy-3 mt-5">
+    @for (hotel of hotels(); track $index) {
+    <div class="col-lg-4 col-md-6 col-sm-12">
+  <app-hotel-card [hotel]="hotel" [routerLink]="['/hotel-details',hotel.id]"></app-hotel-card>
+</div>
+}
+  </div>
+
+
+</div>

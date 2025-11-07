@@ -25,6 +25,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Subscription } from 'rxjs';
 import { IBookingData } from '../../core/interfaces/IBooking-data';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { HotelData } from '../../core/services/hotel-data';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -38,7 +41,6 @@ import { IBookingData } from '../../core/interfaces/IBooking-data';
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
-    CurrencyPipe,
   ],
   templateUrl: './booking-form.html',
   styleUrl: './booking-form.scss',
@@ -46,6 +48,11 @@ import { IBookingData } from '../../core/interfaces/IBooking-data';
 })
 export class BookingForm implements OnInit, OnDestroy {
   private _fb = inject(FormBuilder);
+  private router = inject(ActivatedRoute);
+  private hotelService = inject(HotelData);
+  id:WritableSignal<number> = signal(0)
+  hotel:WritableSignal<any> = signal({})
+
 
   // Inputs
   isLoading = input<boolean>(false);
@@ -99,6 +106,21 @@ export class BookingForm implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializeForm();
     this.setupFormSubscriptions();
+    const sub = this.router.paramMap.subscribe({
+      next:(params:ParamMap)=>{
+        this.id.set(+params.get('id')!);
+      const hotel =  this.hotelService.getHotelById(+this.id());
+        this.hotel.set(hotel);
+        console.log(this.hotel());
+      },
+      error: (err: HttpErrorResponse | Error) => {
+        console.log(err);
+      },
+      complete() {
+        console.log('complete');
+      },
+    });
+    this.subscription.push(sub);
   }
 
   private initializeForm(): void {
@@ -187,6 +209,11 @@ export class BookingForm implements OnInit, OnDestroy {
         days: this.days(),
         startDate: this.startDate(),
         endDate: this.endDate(),
+        hotelName: this.hotel().name,
+        hotelLocation: this.hotel().location,
+        hotelCurrency: this.hotel().currency,
+        costPerDay: this.hotel().costPerDay,
+
       };
       this.formSubmit.emit(bookingData);
     } else {

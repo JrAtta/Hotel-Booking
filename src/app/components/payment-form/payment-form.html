@@ -6,15 +6,15 @@
         <div class="booking-data">
           Transfer LankaStay:
           <p class="mt-2 text-capitalize">
-            {{bookingDetails().days}} day{{bookingDetails().days > 1 ? 's' : ''}} at Blue Origin Fams,
-            Galle, Sri Lanka
+            {{bookingDetails().days}} day{{bookingDetails().days > 1 ? 's' : ''}} at {{bookingDetails().hotelName}},
+            {{bookingDetails().hotelLocation}}
           </p>
         </div>
         <p class="total-cost">
-          Total: <span class="fw-semibold">{{bookingDetails().totalCost | currency}} USD</span>
+          Total: <span class="fw-semibold">{{bookingDetails().totalCost}} {{bookingDetails().hotelCurrency}}</span>
         </p>
         <p class="costPerDay">
-          Initial Payment: <span class="fw-semibold">{{bookingDetails().costPerDay | currency}}</span>
+          Initial Payment: <span class="fw-semibold">{{bookingDetails().costPerDay}} {{bookingDetails().hotelCurrency}}</span>
         </p>
       </div>
     </div>

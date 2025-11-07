@@ -3,10 +3,11 @@ import { CurrencyPipe, NgStyle } from '@angular/common';
 import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { HotelData } from '../../core/services/hotel-data';
 import { RouterLink } from '@angular/router';
+import { HotelCard } from "../hotel-card/hotel-card";
 
 @Component({
   selector: 'app-most-picked',
-  imports: [NgStyle, RouterLink],
+  imports: [NgStyle, RouterLink, HotelCard],
   templateUrl: './most-picked.html',
   styleUrl: './most-picked.scss'
 })

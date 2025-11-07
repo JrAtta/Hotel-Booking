@@ -32,22 +32,39 @@ export const routes: Routes = [
   },
   // booking information
   {
-    path: 'booking-page',
+    path: 'booking-page/:id',
     title: 'Booking Page',
     loadComponent: () =>
       import('./components/booking-information/booking-information').then((m) => m.BookingInformation)
   },
   //hotelDeatailes
   {
-    // path: 'hotel-details/:name/:location/:description/:imageCover/:images/:costPerDay/:currency/:rating/:isPopularChoice/:roomFeature',
     path: 'hotel-details/:id',
     title: 'Hotel Details',
     loadComponent: () =>
       import('./components/hotel-detailes/hotel-detailes').then((m) => m.HotelDetailes)
-  }
+  },
+  //search
+  {
+    path:'search/hotels/:destination/:personsCount/:startDate/:endDate',
+    title: 'Search Hotels',
+    loadComponent: () =>
+      import('./components/search-hotels/search-hotels').then((m) => m.SearchHotels)
+  },
+  //activity details
+  {
+    path: 'activity-details/:id',
+    title: 'Activity Details',
+    loadComponent: () =>
+      import('./components/activity-details/activity-details').then((m) => m.ActivityDetails)
+  },
 
+
+  // not found
+  
 
 ];
+
 
 
 

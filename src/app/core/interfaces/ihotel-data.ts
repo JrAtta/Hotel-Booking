@@ -9,16 +9,16 @@ export interface IhotelData {
   currency: string;
   rating: number;
   isPopularChoice: boolean;
-  roomFeature: RoomFeature;
+  roomFeature: IRoomFeature;
 }
 
-interface RoomFeature {
+export interface IRoomFeature {
   bedroom: number;
   livingRoom: number;
   diningroom: number;
   bathroom: number;
   unitReady: number;
   internetDownload: number;
-  television: boolean;
-  refrigerator: boolean;
+  television: number;
+  refrigerator: number;
 }

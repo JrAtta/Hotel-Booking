@@ -1,1 +1,100 @@
-<p>hotel-detailes works!</p>
+<div class="container h-100 mb-5 ">
+
+  <!-- side title -->
+  <div class="d-flex gap-4 text-capitalize mt-5">
+    <p class="" [ngStyle]="{'color': 'var(--mute-color)'}" routerLink="/home" class="pointer">home</p><strong
+      [ngStyle]="{'color': 'var(--mute-color)'}">/</strong>
+    <p class="fw-semibold small" [ngStyle]="{'color': 'var(--p-color)'}">hotel details</p>
+  </div>
+
+  <div class="detailes-card ">
+    <h1 class=" fs-1 fw-bold text-center text-capitalize"
+      [ngStyle]="{'color': 'var(--p-color)', 'text-wrap': 'balance'}">{{hotelDetails().name}}</h1>
+    <p class=" text-center text-capitalize" [ngStyle]="{'color': 'var(--mute-color)'}">{{hotelDetails().location}}</p>
+
+
+    <div class="row gy-3 mt-2  gx-lg-4 gx-md-2 gx-1">
+      <div class="col-lg-7  col-md-8 col-6  ">
+        <div class="card position-relative h-100  " [ngStyle]="{'max-height': '500px'}">
+          <img [src]="hotelDetails().imageCover" alt="{{hotelDetails().name}}">
+          @if(hotelDetails().isPopularChoice){
+          <div class="top-layer position-absolute end-0 top-0  text-center  small  text-white  text-lowercase p-2 px-4">
+            <span class="pe-1 fw-semibold">popular</span> <span class="fw-light">choice</span>
+          </div>
+          }
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-4 col-6  ">
+        <div class="flex-center flex-column gap-lg-4 gap-md-2 gap-1">
+
+          <div class="card">
+            <img [src]="hotelDetails().images[0]" alt="{{hotelDetails().name}}" class="">
+          </div>
+          <div class="card ">
+            <img [src]="hotelDetails().images[1]" alt="{{hotelDetails().name}}" class="">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row gy-3 mt-5">
+
+      <div class="col-lg-7 col-md-8 col-sm-12">
+        <p class="mb-2 fw-semibold fs-6 text-capitalize " [ngStyle]="{'color': 'var(--p-color)'}">
+          about the place
+        </p>
+        <p class=" text-capitalize  lh-lg small   w-lg-75 w-md-100 w-100"
+          [ngStyle]="{'color': 'var(--mute-color)', 'text-wrap': 'balance'}">
+          {{hotelDetails().description}}
+        </p>
+      </div>
+      <div class="col-lg-5 col-md-4 col-sm-12">
+        <div class="card ps-4 py-4 gap-3 border">
+          <p class="fs-6 fw-semibold text-capitalize" [ngStyle]="{'color': 'var(--p-color)'}">
+            start booking
+          </p>
+          <div class="flex-center justify-content-start gap-3 mb-3 ">
+            <span class="fw-semibold fs-3 " [ngStyle]="{'color': 'var(--price-color)'}">{{hotelDetails().currency}}
+              {{hotelDetails().costPerDay}}</span>
+            <span class="fw-light  fs-3 text-capitalize" [ngStyle]="{'color': 'var(--mute-color)'}">per day</span>
+          </div>
+          <button class="btn text-capitalize col-9 text-white" [ngStyle]="{'background-color': 'var(--btn-bg)'}"
+            [routerLink]="['/booking-page', hotelDetails().id]">book
+            now!</button>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <!-- <div class="flex-center justify-content-between  gap-4 mt-5 flex-wrap "> -->
+    <div class="row gy-4 mt-5 ">
+      @for(feature of features() ; track $index){
+      <!-- <div class="flex-center flex-column gap-2 align-items-start"> -->
+      <div
+        class="  col-lg col-md-3 col-sm-4  col-6  flex-center flex-column gap-2 align-items-md-start align-items-center ">
+        <img src="{{feature.icon}}" alt="{{feature.title}}" width="" class="feature-icon">
+        <div class="flex-center gap-2">
+          <span class="fw-semibold" [ngStyle]="{'color': 'var(--p-color)'}"> {{feature.value}}</span>
+          <span class="text-nowrap" [ngStyle]="{'color': 'var(--mute-color)'}">{{feature.title}}</span>
+        </div>
+      </div>
+      }
+    </div>
+
+
+  </div>
+
+
+  <!-- activities -->
+
+  <div class="mt-3 overflow-hidden">
+    <app-nearby-activities></app-nearby-activities>
+  </div>
+
+
+</div>
+

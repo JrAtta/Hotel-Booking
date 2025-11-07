@@ -9,12 +9,13 @@
 
 
 html {
+    scroll-behavior: smooth;
   @include mat.theme((
     color: (
       primary: mat.$azure-palette,
       tertiary: mat.$blue-palette,
     ),
-    typography: Roboto,
+    typography: Poppins,
     density:0,
   ));
 
@@ -53,6 +54,7 @@ body {
   --dark-color: #212529;
   --placeholder-color:#D2D2D2;
   --p-color:#152C5B;
+  --price-color:#1ABC9C;
   --mute-color:#B0B0B0;
 }
 
@@ -88,15 +90,7 @@ body {
   }
 
 }
-// .form-label{
-//   &::after{
-//     content: '*';
-//     color: red;
-//     margin-left: 2px;
-//       font-size: .9rem;
 
-//   }
-// }
 
 .pointer{
   cursor: pointer;

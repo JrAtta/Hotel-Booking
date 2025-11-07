@@ -54,6 +54,7 @@ export class Login implements OnInit {
       this._FormData.setFormData(this.loginForm.value);
       this.loginForm.reset();
       this.navigateToBookingPage();
+
     } else {
       this.loginForm.markAllAsTouched();
       this.loginForm.setErrors({'invalidUser': true});
@@ -62,10 +63,6 @@ export class Login implements OnInit {
 
     }
   }
-
-
-
-
 
 
 
@@ -80,21 +77,12 @@ invalidUser(form:AbstractControl) : { [key: string]: any } | null {
 }
 
 
-
-
-
-
-
-
-
-
-
   // Toggle password visibility
   togglePasswordVisibility() {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
 
   navigateToBookingPage() {
-    this.router.navigate(['/booking page']);
+    this.router.navigate(['/home']);
   }
 }

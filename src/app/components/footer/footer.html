@@ -1,24 +1,24 @@
 <footer class=" w-100 border-top pt-3 " [ngStyle]="{'background': 'var(--primarwy-color)'}">
-  <div class="container flex-center ">
-    <div class="flex-cesnter  justify-content-between  d-md-flex w-100  gap-md-5">
+  <div class="container flex-center  ">
+    <div class="flex-centers d-flex flex-wrap    justify-content-between   w-100  gap-3">
       <div class="left-side">
         <div class="title d-flex fs-4 pointer mb-2" routerLink="/home">
           <div class="term1">Lanka</div>
           <div class="term2">Stay.</div>
         </div>
 
-        <p class="small " [ngStyle]="{'color': 'var(--mute-color)'}">We kaboom your beauty holiday<br>
+        <p class="  small fw-light fs-6" [ngStyle]="{'color': 'var(--mute-color)'}">We kaboom your beauty holiday<br>
           instantly and memorable.</p>
       </div>
       <div class="right-side">
-        <h6 class="text-capitalize fw-semibold mb-3">become a hotel owner</h6>
-        <button class="btn text-capitalize text-white fw-semibold px-4"
-          [ngStyle]="{'background': 'var(--primary-color)'}">registe now</button>
+        <h6 class="text-capitalize  mb-3">become a hotel owner</h6>
+        <button class="btn text-capitalize text-white   px-3"
+          [ngStyle]="{'background': 'var(--primary-color)'}" routerLink="/registerOwner">registe now</button>
       </div>
 
     </div>
   </div>
   <div class="text-center w-100 mt-3">
-    <p class="small fw-semibold flex-center text-white p-2" [ngStyle]="{'background': 'var(--primary-color)'}">Copyright 2025 • All rights reserved • ibrahim Atta</p>
+    <p class="small flex-center text-white p-2" [ngStyle]="{'background': 'var(--primary-color)'}">Copyright 2025 • All rights reserved • ibrahim Atta</p>
   </div>
 </footer>

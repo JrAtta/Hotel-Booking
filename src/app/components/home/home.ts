@@ -60,18 +60,6 @@ import { MostPicked } from '../most-picked/most-picked';
 })
 export class Home implements OnInit {
   data: WritableSignal<IhotelData[]> = signal([]);
-
-  // mapping hotel destinations here >>
-  destinations: WritableSignal<string[]> = signal([]);
-
-  constructor(private hotelData: HotelData, private FB: FormBuilder) {
-    effect(() => {
-      this.serachGroup
-        .get('destination')
-        ?.setValue(this.location(), { emitEvent: false });
-    });
-  }
-
   bannerFeatures = [
     {
       icon: 'images/ic_traveler.png',
@@ -89,6 +77,17 @@ export class Home implements OnInit {
       title: 'cities',
     },
   ];
+  // mapping hotel destinations here >>
+  destinations: WritableSignal<string[]> = signal([]);
+
+  constructor(private hotelData: HotelData, private FB: FormBuilder) {
+    effect(() => {
+      this.serachGroup
+        .get('destination')
+        ?.setValue(this.location(), { emitEvent: false });
+    });
+  }
+
   ngOnInit(): void {
     this.data.set(this.hotelData.getData());
     const locations = this.data().map((hotel) => hotel.location);
@@ -101,6 +100,7 @@ export class Home implements OnInit {
 
   personsCount: WritableSignal<1 | 2 | 3> = signal(1);
   location: WritableSignal<string> = signal('');
+
   initializeForm() {
     this.serachGroup = this.FB.group({
       destination: [this.location(), []],
@@ -137,14 +137,5 @@ export class Home implements OnInit {
     console.log('invalid');
   }
 
-  filterHotelBySearchForm(form: AbstractControl) {
-    console.log(form.value);
-    const hotelChosen = this.data().filter((hotel: IhotelData) => {
-      return (
-        hotel.location === form.get('destination')?.value ||
-        hotel.roomFeature.bedroom === form.get('personsCount')?.value
-      );
-    });
-    console.log(hotelChosen);
-  }
+
 }
