@@ -15,11 +15,12 @@
           memorable moments.
         </p>
 
-        <a href="#hotels" class=" d-block ">
-        <button class="btn text-capitalize text-white col-lg-4  fw-bold mb-5"
-          [ngStyle]="{'background-color': 'var(--btn-bg)'}" routerLink="/hotel" >
-          show more
-        </button>
+        <a class=" d-block ">
+          <button class="btn text-capitalize text-white col-lg-4  fw-bold mb-5"
+            [ngStyle]="{'background-color': 'var(--btn-bg)'}"
+            (click)="showMore()">
+            show more
+          </button>
         </a>
         <div class="features flex-center justify-content-md-start mt-lg-4 flex-wrasp  ">
           @for (item of bannerFeatures; track $index) {
@@ -44,57 +45,63 @@
   </div>
 
   <!-- blue section for search module -->
-<div class="border py-5 px-0 mt-4">
+  <div class="border py-5 px-0 mt-4">
     <div class=" blue-sec d-flex flex-center justify-content-evenly w-100 border rounded-pillw  p-4 gap-4  flex-wrap "
-    [ngStyle]="{'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.1)', 'background-color': '#EAF1FF'}">
+      [ngStyle]="{'box-shadow': '0px 4px 20px rgba(0, 0, 0, 0.1)', 'background-color': '#EAF1FF'}">
 
-    <div class=" position-relative col-md-3 col-sm-5  col-5">
-      <button (click)="picker.open()" class=" w-100 flex-wrap">
-        <img src="images/Frame.png" alt="dateRange">
-        <span class="text-capitalize ">check available</span>
-      </button>
-      <div class="position-absolute small date-field ">
-        <mat-date-range-input [formGroup]="serachGroup" (ngSubmit)="onSubmit()" [rangePicker]="picker">
-          <input matStartDate placeholder="" formControlName="startDate" title="start">
-          <input matEndDate placeholder="" formControlName="endDate" title="end">
-        </mat-date-range-input>
-        <mat-date-range-picker #picker></mat-date-range-picker>
+      <div class=" position-relative col-md-3 col-sm-5  col-5">
+        <button (click)="picker.open()" class=" w-100 flex-wrap">
+          <img src="images/Frame.png" alt="dateRange">
+          <span class="text-capitalize ">check available</span>
+        </button>
+        <div class="position-absolute small date-field ">
+          <mat-date-range-input [formGroup]="serachGroup" (ngSubmit)="onSubmit()" [rangePicker]="picker">
+            <input matStartDate placeholder="" formControlName="startDate" title="start">
+            <input matEndDate placeholder="" formControlName="endDate" title="end">
+          </mat-date-range-input>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </div>
       </div>
+
+      <button class="col-md-3 col-sm-5 col-5 " [matMenuTriggerFor]="menu" [formGroup]="serachGroup">
+        <img src="images/Vector.png" alt="persons">
+        <span class="text-capitalize">Person {{ personsCount() }}</span>
+        <mat-menu #menu="matMenu" yPosition="above" class="" [formGroup]="serachGroup">
+          <button mat-menu-item (click)="selectedPersonsCount(1)"> 1</button>
+          <button mat-menu-item (click)="selectedPersonsCount(2)"> 2</button>
+          <button mat-menu-item (click)="selectedPersonsCount(3)"> 3</button>
+        </mat-menu>
+      </button>
+
+
+      <button class=" position-relative flex-wrap col-md-3 col-sm-5 col-5" [formGroup]="serachGroup">
+        <img src="images/add_location.png" alt="Location"
+          [ngClass]="{'opacity-0': serachGroup.get('destination')?.value}">
+        <mat-label>{{ serachGroup.get('destination')?.value ? '': 'Select Location'}} </mat-label>
+        <mat-select class="position-absolute w-75 select-field" formControlName="destination">
+          <mat-option>None</mat-option>
+          @for (location of destinations(); track $index) {
+          <mat-option [value]="location"> {{location}}</mat-option>
+          }
+        </mat-select>
+      </button>
+
+      <button class="btn text-capitalize text-white  fw-bold col-lg-2 col-5"
+        [ngStyle]="{'background-color': 'var(--btn-bg)','letter-spacing': '1px'}" (click)="serach()">
+        Search
+      </button>
+
     </div>
-
-    <button class="col-md-3 col-sm-5 col-5 " [matMenuTriggerFor]="menu" [formGroup]="serachGroup">
-      <img src="images/Vector.png" alt="persons">
-      <span class="text-capitalize">Person {{ personsCount() }}</span>
-      <mat-menu #menu="matMenu" yPosition="above" class="" [formGroup]="serachGroup">
-        <button mat-menu-item (click)="selectedPersonsCount(1)"> 1</button>
-        <button mat-menu-item (click)="selectedPersonsCount(2)"> 2</button>
-        <button mat-menu-item (click)="selectedPersonsCount(3)"> 3</button>
-      </mat-menu>
-    </button>
-
-
-    <button class=" position-relative flex-wrap col-md-3 col-sm-5 col-5" [formGroup]="serachGroup">
-      <img src="images/add_location.png" alt="Location"
-        [ngClass]="{'opacity-0': serachGroup.get('destination')?.value}">
-      <mat-label>{{ serachGroup.get('destination')?.value ? '': 'Select Location'}} </mat-label>
-      <mat-select class="position-absolute w-75 select-field" formControlName="destination">
-        <mat-option>None</mat-option>
-        @for (location of destinations(); track $index) {
-        <mat-option [value]="location"> {{location}}</mat-option>
-        }
-      </mat-select>
-    </button>
-
-    <button class="btn text-capitalize text-white  fw-bold col-lg-2 col-5"
-      [ngStyle]="{'background-color': 'var(--btn-bg)','letter-spacing': '1px'}" [routerLink]="['/search/hotels',serachGroup.get('destination')?.value, personsCount(),serachGroup.get('startDate')?.value.toLocaleString(), serachGroup.get('endDate')?.value.toString()]">
-      Search
-    </button>
-
   </div>
-</div>
 
   <!-- hotels -->
-  <div class="mt-3" id="hotels">
+  <div class="mt-3" id="Hotels">
     <app-most-picked></app-most-picked>
   </div>
 </div>
+
+
+<!-- Loading Spinner -->
+<ngx-spinner bdColor="rgba(255, 255, 255,.5)" size="medium" color="#152C5B" type="square-jelly-box" [fullScreen]="true">
+  <p>Loading...</p>
+</ngx-spinner>

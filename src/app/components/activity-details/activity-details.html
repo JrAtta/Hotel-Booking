@@ -2,16 +2,16 @@
 
   <!-- <h5 class="text-capitalize fs-5  w-50 pb-2 mb-5" [ngStyle]="{'color': 'var(--secondary-color)', 'border-bottom': ' 1px solid var(--mute-color)'}">activity detailes</h5> -->
 
-    <!-- side title -->
+  <!-- side title -->
   <div class="d-flex gap-4 text-capitalize mb-3">
-    <p class="" [ngStyle]="{'color': 'var(--mute-color)'}"   class="pointer">  activity </p><strong
+    <p class="" [ngStyle]="{'color': 'var(--mute-color)'}" class="pointer"> activity </p><strong
       [ngStyle]="{'color': 'var(--mute-color)'}">/</strong>
     <p class="fw-semibold small" [ngStyle]="{'color': 'var(--p-color)'}">activity details</p>
   </div>
 
   <!-- Swiper -->
   <div class="swiper-container ">
-    <swiper-container class="mySwiper" thumbs-swiper=".mySwiper2" loop="true" space-between="10" navigation="true">
+    <swiper-container class="mySwiper" thumbs-swiper=".mySwiper2" loop="false" space-between="10" navigation="true">
       <swiper-slide>
         <div class="top-layer ">
           {{activity().category}}
@@ -42,7 +42,7 @@
     </swiper-container>
 
     <swiper-container class="mySwiper2" space-between="10" free-mode="true" watch-slides-progress="true"
-      slides-per-view="3" loop="true">
+      slides-per-view="3" loop="false">
       <swiper-slide>
         <img [src]="activity().image" alt="{{activity().name}}" />
       </swiper-slide>
@@ -68,7 +68,8 @@
       location:
       <span [ngStyle]="{'color': 'var(--mute-color)', 'text-wrap': 'balance'}">
         {{activity().location}}
-      </span></p>
+      </span>
+    </p>
     <p class="description lh-lg ">
       description:
       <span [ngStyle]="{'color': 'var(--mute-color)', 'text-wrap': 'balance'}">
@@ -124,18 +125,32 @@
           <h1 class="modal-title fs-5 text-capitalize fw-semibold " id="exampleModalLabel">activity booking</h1>
         </div>
         <div class="modal-body">
-          <h5 class=" text-capitalize fw-semibold fs-6 mb-3" [ngStyle]="{'color': 'var(--p-color)'}">your reservation</h5>
-          <p class="text-capitalize mb-2 small" [ngStyle]=" {'color':'var(--p-color)'}">activity-no: <span class="ps-2 fw-semibold text-uppercase fs-6 " [ngStyle]=" {'color':'var(--primary-color)'} ">{{generateActNo()}}</span></p>
-          <p class=" text-capitalize mb-2 small" [ngStyle]=" {'color':'var(--p-color)'}">activity name: <span class="ps-2 fw-semibold text-uppercase  " [ngStyle]=" {'color':'var(--primary-color)'} ">{{activity().name}}</span></p>
-          <p class=" text-capitalize mb-2 small" [ngStyle]=" {'color':'var(--p-color)'}">date: <span class="ps-2  text-uppercase  " [ngStyle]=" {'color':'var(--mute-color)'} ">{{ date|date}}</span></p>
+          <h5 class=" text-capitalize fw-semibold fs-6 mb-3" [ngStyle]="{'color': 'var(--p-color)'}">your reservation
+          </h5>
+          <p class="text-capitalize mb-2 small" [ngStyle]=" {'color':'var(--p-color)'}">activity-no: <span
+              class="ps-2 fw-semibold text-uppercase fs-6 "
+              [ngStyle]=" {'color':'var(--primary-color)'} ">{{generateActNo()}}</span></p>
+          <p class=" text-capitalize mb-2 small" [ngStyle]=" {'color':'var(--p-color)'}">activity name: <span
+              class="ps-2 fw-semibold text-uppercase  "
+              [ngStyle]=" {'color':'var(--primary-color)'} ">{{activity().name}}</span></p>
+          <p class=" text-capitalize mb-2 small" [ngStyle]=" {'color':'var(--p-color)'}">date: <span
+              class="ps-2  text-uppercase  " [ngStyle]=" {'color':'var(--mute-color)'} ">{{ date|date}}</span></p>
           <hr>
           <h5 class=" text-capitalize fw-semibold fs-6 mb-3" [ngStyle]="{'color': 'var(--p-color)'}">payment detail</h5>
-          <p class="text-capitalize mb-2 small flex-center justify-content-between" [ngStyle]=" {'color':'var(--p-color)'}">base for: <span class="ps-2 fw-semibold text-uppercase fs-6 " [ngStyle]=" {'color':'var(--dark-color)'} ">{{activity().price === 0 ? 'Free Access' : '$' + activity().price}}</span></p>
-          <p class="text-capitalize mb-2 small flex-center justify-content-between" [ngStyle]=" {'color':'var(--p-color)'}">taxes: <span class="ps-2 fw-semibold text-uppercase fs-6 " [ngStyle]=" {'color':'var(--dark-color)'} "> {{activity().price * 0.1}} $</span></p>
-          <p class="text-capitalize flex-center justify-content-between" [ngStyle]=" {'color':'#28a745'}">total: <span class="ps-2 fw-semibold text-uppercase fs-6 "> {{ activity().price + activity().price * 0.1}} $</span></p>
+          <p class="text-capitalize mb-2 small flex-center justify-content-between"
+            [ngStyle]=" {'color':'var(--p-color)'}">base for: <span class="ps-2 fw-semibold text-uppercase fs-6 "
+              [ngStyle]=" {'color':'var(--dark-color)'} ">{{activity().price === 0 ? 'Free Access' : '$' +
+              activity().price}}</span></p>
+          <p class="text-capitalize mb-2 small flex-center justify-content-between"
+            [ngStyle]=" {'color':'var(--p-color)'}">taxes: <span class="ps-2 fw-semibold text-uppercase fs-6 "
+              [ngStyle]=" {'color':'var(--dark-color)'} "> {{activity().price * 0.1}} $</span></p>
+          <p class="text-capitalize flex-center justify-content-between" [ngStyle]=" {'color':'#28a745'}">total: <span
+              class="ps-2 fw-semibold text-uppercase fs-6 "> {{ activity().price + activity().price * 0.1}} $</span></p>
           <hr>
           <h5 class=" text-capitalize fw-semibold fs-6 mb-3" [ngStyle]="{'color': 'var(--p-color)'}">payment</h5>
-          <p class="text-capitalize mb-2 small fw-semibold flex-center justify-content-between"[ngStyle]=" {'color':'var(--p-color)'}">on cash: <span class="ps-2 fw-semibold text-uppercase fs-6 " [ngStyle]=" {'color':'var(dark-color)'} "> {{activity().price + activity().price * 0.1}} $ </span></p>
+          <p class="text-capitalize mb-2 small fw-semibold flex-center justify-content-between"
+            [ngStyle]=" {'color':'var( --dark-color)'}">on cash: <span class="ps-2 fw-semibold text-uppercase fs-6 "
+              [ngStyle]=" {'color':'var(--dark-color)'} "> {{activity().price + activity().price * 0.1}} $ </span></p>
         </div>
         <div class="modal-footer border-0">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

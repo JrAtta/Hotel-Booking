@@ -1,0 +1,26 @@
+.room-card {
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.01);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .room-img {
+    overflow: hidden;
+
+    img {
+      &:hover {
+        scale: 1.5;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+
+  button {
+    &:hover {
+      scale: .94;
+      transition: all 0.3s linear;
+    }
+  }
+}

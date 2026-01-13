@@ -61,7 +61,8 @@
             <span class="fw-light  fs-3 text-capitalize" [ngStyle]="{'color': 'var(--mute-color)'}">per day</span>
           </div>
           <button class="btn text-capitalize col-9 text-white" [ngStyle]="{'background-color': 'var(--btn-bg)'}"
-            [routerLink]="['/booking-page', hotelDetails().id]">book
+            (click)="bookNow()"
+            >book
             now!</button>
         </div>
       </div>
@@ -98,3 +99,8 @@
 
 </div>
 
+
+<!-- Loading Spinner -->
+<ngx-spinner bdColor="rgba(255, 255, 255,.5)" size="medium" color="#152C5B" type="square-jelly-box" [fullScreen]="true">
+  <p>Loading...</p>
+</ngx-spinner>

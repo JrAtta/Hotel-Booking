@@ -77,7 +77,6 @@ export class BookingInformation {
   onBookingSubmit(bookingData: IBookingData): void {
     this.isLoading.set(true);
     this.spinner.show();
-
     setTimeout(() => {
       this.bookingData.set(bookingData);
       this.currentStep.set('payment');

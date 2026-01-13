@@ -59,9 +59,38 @@ export const routes: Routes = [
       import('./components/activity-details/activity-details').then((m) => m.ActivityDetails)
   },
 
+  // hotels
+  {
+    path:'hotels',
+    title: 'Hotels',
+    loadComponent: () =>
+      import('./components/hotels/hotels').then((m) => m.Hotels)
+  },
 
-  // not found
-  
+  //Rooms
+  {
+    path:'rooms',
+    title: 'Rooms',
+    loadComponent: () =>
+      import('./components/rooms/rooms').then((m) => m.Rooms)
+  },
+
+  //
+
+
+
+
+
+  //not found   >>>>>>>> must be last <<<<<<<<
+  {
+    path: '**',
+    title: 'Not Found',
+    loadComponent: () =>
+      import('./components/not-found/not-found').then((m) => m.NotFound)
+  },
+
+
+
 
 ];
 

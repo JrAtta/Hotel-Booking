@@ -1,130 +1,130 @@
 <div class="register-container min-vh-100 overflow-hidden">
   @if (!accountCreatedSucssfullyMessage()) {
-    <div class="row " >
-      <div class="col-md-6 d-none d-md-block">
-        <div class="bg-left">
-          <div class="overlay flex-center">
-            <div class="title text-center d-flex fs-1 ">
-              <div class="term1">Lanka</div>
-              <div class="term2">Stay.</div>
-            </div>
+  <div class="row ">
+    <div class="col-md-6 d-none d-md-block">
+      <div class="bg-left">
+        <div class="overlay flex-center">
+          <div class="title text-center d-flex fs-1 ">
+            <div class="term1">Lanka</div>
+            <div class="term2">Stay.</div>
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-12  ">
-        <div class="form-right m-5 mb-0  ">
-          <h3 class="text-center fw-semibold ">Create Account</h3>
-          <form class="mt-3" [formGroup]="registerForm" (ngSubmit)="register()">
-            <div class="">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" [class.valid]="registerForm.get('name')?.valid" class="form-control"
-                [class.invalid]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
-                class="form-control" formControlName="name" id="name" placeholder="Enter your name">
-            </div>
+    </div>
+    <div class="col-md-6 col-12  ">
+      <div class="form-right m-5 mb-0  ">
+        <h3 class="text-center fw-semibold ">Create Account</h3>
+        <form class="mt-3" [formGroup]="registerForm" (ngSubmit)="register()">
+          <div class="">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" [class.valid]="registerForm.get('name')?.valid" class="form-control"
+              [class.invalid]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+              class="form-control" formControlName="name" id="name" placeholder="Enter your name">
+          </div>
 
-            @if (registerForm.get('name')?.touched && registerForm.get('name')?.invalid) {
-            @if (registerForm.get('name')?.hasError('required')) {
-            <small class="text-danger">Name is required</small>
-            }
-            @if (registerForm.get('name')?.hasError('minlength')) {
-            <small class="text-danger">Name must be at least 6 characters</small>
-            }
-            }
+          @if (registerForm.get('name')?.touched && registerForm.get('name')?.invalid) {
+          @if (registerForm.get('name')?.hasError('required')) {
+          <small class="text-danger">Name is required</small>
+          }
+          @if (registerForm.get('name')?.hasError('minlength')) {
+          <small class="text-danger">Name must be at least 6 characters</small>
+          }
+          }
 
-            <div class="mt-3">
-              <label for="email" class="form-label">E mail </label>
-              <input type="email" [class.valid]="registerForm.get('email')?.valid" class="form-control"
-                [class.invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
-                class="form-control" formControlName="email" id="email" placeholder="name@gmail.com">
-            </div>
+          <div class="mt-3">
+            <label for="email" class="form-label">E mail </label>
+            <input type="email" [class.valid]="registerForm.get('email')?.valid" class="form-control"
+              [class.invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+              class="form-control" formControlName="email" id="email" placeholder="name@gmail.com">
+          </div>
 
-            @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
-            @if (registerForm.get('email')?.hasError('required')) {
-            <small class="text-danger">Email is required</small>
-            }
-            @if (registerForm.get('email')?.hasError('email')) {
-            <small class="text-danger">Email is invalid</small>
-            }
-            }
+          @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
+          @if (registerForm.get('email')?.hasError('required')) {
+          <small class="text-danger">Email is required</small>
+          }
+          @if (registerForm.get('email')?.hasError('email')) {
+          <small class="text-danger">Email is invalid</small>
+          }
+          }
 
-            <div class="mt-3">
-              <label for="phone" class="form-label">Phone No</label>
-              <input type="tel" class="form-control" [class.valid]="registerForm.get('phone')?.valid"
-                [class.invalid]="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched"
-                formControlName="phone" id="phone" placeholder="With Country Code">
-            </div>
+          <div class="mt-3">
+            <label for="phone" class="form-label">Phone No</label>
+            <input type="tel" class="form-control" [class.valid]="registerForm.get('phone')?.valid"
+              [class.invalid]="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched"
+              formControlName="phone" id="phone" placeholder="With Country Code">
+          </div>
 
-            @if (registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid) {
-            @if (registerForm.get('phone')?.hasError('required')) {
-            <small class="text-danger">Phone No is required</small>
-            }
-            @if (registerForm.get('phone')?.hasError('pattern')) {
-            <small class="text-danger">Phone No is invalid</small>
-            }
-            }
+          @if (registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid) {
+          @if (registerForm.get('phone')?.hasError('required')) {
+          <small class="text-danger">Phone No is required</small>
+          }
+          @if (registerForm.get('phone')?.hasError('pattern')) {
+          <small class="text-danger">Phone No is invalid</small>
+          }
+          }
 
-            <div class="mt-3">
-              <label for="country" class="form-label">Country </label>
-              <input type="country" class="form-control" [class.valid]="registerForm.get('country')?.valid"
-                [class.invalid]="registerForm.get('country')?.invalid && registerForm.get('country')?.touched"
-                class="form-control" class="form-control" formControlName="country" id="country"
-                placeholder="Country Name ">
-            </div>
+          <div class="mt-3">
+            <label for="country" class="form-label">Country </label>
+            <input type="country" class="form-control" [class.valid]="registerForm.get('country')?.valid"
+              [class.invalid]="registerForm.get('country')?.invalid && registerForm.get('country')?.touched"
+              class="form-control" class="form-control" formControlName="country" id="country"
+              placeholder="Country Name ">
+          </div>
 
-            @if (registerForm.get('country')?.touched && registerForm.get('country')?.invalid) {
-            @if (registerForm.get('country')?.hasError('required')) {
-            <small class="text-danger">Country is required</small>
-            }
-            }
+          @if (registerForm.get('country')?.touched && registerForm.get('country')?.invalid) {
+          @if (registerForm.get('country')?.hasError('required')) {
+          <small class="text-danger">Country is required</small>
+          }
+          }
 
-            <div class="mt-3">
-              <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" [class.valid]="registerForm.get('userName')?.valid"
-                class="form-control"
-                [class.invalid]="registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched"
-                class="form-control" formControlName="userName" id="username" placeholder="Enter your username">
-            </div>
-            @if (registerForm.get('userName')?.touched && registerForm.get('userName')?.invalid) {
-            @if (registerForm.get('userName')?.hasError('required')) {
-            <small class="text-danger">Username is required</small>
-            }
-            @if (registerForm.get('userName')?.hasError('minlength')) {
-            <small class="text-danger">Username must be at least 6 characters</small>
-            }
-            }
+          <div class="mt-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" [class.valid]="registerForm.get('userName')?.valid"
+              class="form-control"
+              [class.invalid]="registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched"
+              class="form-control" formControlName="userName" id="username" placeholder="Enter your username">
+          </div>
+          @if (registerForm.get('userName')?.touched && registerForm.get('userName')?.invalid) {
+          @if (registerForm.get('userName')?.hasError('required')) {
+          <small class="text-danger">Username is required</small>
+          }
+          @if (registerForm.get('userName')?.hasError('minlength')) {
+          <small class="text-danger">Username must be at least 6 characters</small>
+          }
+          }
 
-            <div class="mt-3 mb-2">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" [class.valid]="registerForm.get('password')?.valid"
-                class="form-control"
-                [class.invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
-                class="form-control" formControlName="password" id="password" placeholder="6+ characters">
-            </div>
-            @if (registerForm.get('password')?.touched && registerForm.get('password')?.invalid) {
-            @if (registerForm.get('password')?.hasError('required')) {
-            <small class="text-danger">Password is required</small>
-            }
-            @if (registerForm.get('password')?.hasError('minlength')) {
-            <small class="text-danger">Password must be at least 6 characters</small>
-            }
-            }
+          <div class="mt-3 mb-2">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" [class.valid]="registerForm.get('password')?.valid"
+              class="form-control"
+              [class.invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+              class="form-control" formControlName="password" id="password" placeholder="6+ characters">
+          </div>
+          @if (registerForm.get('password')?.touched && registerForm.get('password')?.invalid) {
+          @if (registerForm.get('password')?.hasError('required')) {
+          <small class="text-danger">Password is required</small>
+          }
+          @if (registerForm.get('password')?.hasError('minlength')) {
+          <small class="text-danger">Password must be at least 6 characters</small>
+          }
+          }
 
-            <p class="small" [ngStyle]="textWrapBalance">By signing up you agree to <a href="/">terms and
-                conditions</a> at zoho.</p>
-            <button type="submit" class="btn w-100"  >Register</button>
-            <a class="d-block text-center my-3 login" routerLink="/login">Login</a>
-          </form>
-
-
-        </div>
-
+          <p class="small" [ngStyle]="textWrapBalance">By signing up you agree to <a href="/">terms and
+              conditions</a> at zoho.</p>
+          <button type="submit" class="btn w-100">Register</button>
+          <a class="d-block text-center my-3 login" routerLink="/login">Login</a>
+        </form>
 
 
       </div>
+
+
+
     </div>
-}
+  </div>
+  }
   @else {
-    <div class="row ">
+  <div class="row ">
     <div class="col-12  min-vh-100">
       <div class="background-success ">
         <div class="success-overlay flex-center  flex-column gap-4 px-3">
@@ -134,15 +134,21 @@
           </div>
           <img src="images/check_circle.png" alt="check-circle">
           <div class="main-text text-capitalize text-center  pb-2" [ngStyle]="textWrapBalance">
-            <h2 class="term1 mb-3 " >
+            <h2 class="term1 mb-3 ">
               Account Created Successfully
             </h2>
             <p class="fw-semibold" [ngStyle]="{'color':'var(--p-color)'}">please check your email</p>
-            <button type="submit" class="btn text-capitalize text-white px-5 py-2"  (click)="navigateToLogin()">book now</button>
+            <button type="submit" class="btn text-capitalize text-white px-5 py-2" (click)="navigateToLogin()">book
+              now</button>
           </div>
         </div>
       </div>
     </div>
-    </div>
+  </div>
   }
 </div>
+
+<!-- Loading Spinner -->
+<ngx-spinner bdColor="rgba(255, 255, 255,.5)" size="medium" color="#152C5B" type="square-jelly-box" [fullScreen]="true">
+  <p>Loading...</p>
+</ngx-spinner>

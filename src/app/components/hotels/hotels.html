@@ -1,0 +1,14 @@
+<div class="container my-5 py-3">
+   <div class="mb-5">
+    <h1 class=" fs-1 fw-bold text-center text-capitalize"
+      [ngStyle]="{'color': 'var(--p-color)', 'text-wrap': 'balance'}">our <span class="term1">lanka</span> hotels</h1>
+    <p class=" text-center text-capitalize" [ngStyle]="{'color': 'var(--mute-color)'}">Where your family's comfort always comes first</p>
+   </div>
+  <div class="row gy-3">
+    @for (hotel of hotels(); track $index) {
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+      <app-hotel-card [hotel]="hotel" [routerLink]="['/hotel-details',hotel.id]" ></app-hotel-card>
+    </div>
+  }
+  </div>
+</div>

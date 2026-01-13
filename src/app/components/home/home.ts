@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   effect,
+  HostListener,
   OnInit,
   signal,
   WritableSignal,
@@ -9,7 +10,7 @@ import {
 import { NgStyle, JsonPipe, DatePipe, NgClass } from '@angular/common';
 import { HotelData } from '../../core/services/hotel-data';
 import { IhotelData } from '../../core/interfaces/ihotel-data';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   AbstractControl,
   FormBuilder,
@@ -32,13 +33,14 @@ import {
 } from '@angular/material/menu';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MostPicked } from '../most-picked/most-picked';
+import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     NgStyle,
-    RouterLink,
+    // RouterLink,
     // JsonPipe,
     // DatePipe,
     FormsModule,
@@ -52,6 +54,7 @@ import { MostPicked } from '../most-picked/most-picked';
     MatSelectModule,
     NgClass,
     MostPicked,
+    NgxSpinnerComponent
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -80,7 +83,7 @@ export class Home implements OnInit {
   // mapping hotel destinations here >>
   destinations: WritableSignal<string[]> = signal([]);
 
-  constructor(private hotelData: HotelData, private FB: FormBuilder) {
+  constructor(private hotelData: HotelData, private FB: FormBuilder, private spinner:NgxSpinnerService, private router:Router) {
     effect(() => {
       this.serachGroup
         .get('destination')
@@ -115,27 +118,46 @@ export class Home implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.serachGroup);
 
-    const selectedDate = this.serachGroup.get('startDate')?.value;
-    const today = new Date();
-    const checkdate = new Date(selectedDate);
-    console.log(selectedDate);
-    console.log(checkdate);
-    console.log(today);
-    today.setHours(0, 0, 0, 0);
-    checkdate.setHours(0, 0, 0, 0);
-    //check what is bigger date or today
+      console.log(this.serachGroup);
+      const selectedDate = this.serachGroup.get('startDate')?.value;
+      const today = new Date();
+      const checkdate = new Date(selectedDate);
+      console.log(selectedDate);
+      console.log(checkdate);
+      console.log(today);
+      today.setHours(0, 0, 0, 0);
+      checkdate.setHours(0, 0, 0, 0);
+      //check what is bigger >>>  date or today
 
-    if (selectedDate > today) {
-      console.log('valid');
-    } else if (selectedDate < today) {
+      if (selectedDate > today) {
+        console.log('valid');
+      } else if (selectedDate < today) {
+        console.log('invalid');
+      } else {
+        console.log('equal');
+      }
       console.log('invalid');
-    } else {
-      console.log('equal');
-    }
-    console.log('invalid');
+
   }
+  serach(){
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+      this.router.navigate(['/search/hotels',this.serachGroup.get('destination')?.value,this.personsCount(),this.serachGroup.get('startDate')?.value.toLocaleString(), this.serachGroup.get('endDate')?.value.toString()]);
+    }, 1500);
+  }
+
+    showMore(){
+
+      window.scrollTo({
+        top: document.getElementById('Hotels')!.offsetTop - 50,
+        behavior: 'smooth',
+      });
+
+
+
+    }
 
 
 }

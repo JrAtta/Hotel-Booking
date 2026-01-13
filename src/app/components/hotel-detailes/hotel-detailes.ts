@@ -7,17 +7,18 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core';
-import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HotelData } from '../../core/services/hotel-data';
 import { NgStyle } from '@angular/common';
 import { IRoomFeature } from '../../core/interfaces/ihotel-data';
 import { NearbyActivities } from "../nearby-activities/nearby-activities";
+import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
 // import Swiper from 'swiper';
 
 @Component({
   selector: 'app-hotel-detailes',
-  imports: [NgStyle, RouterLink, NearbyActivities],
+  imports: [NgStyle, RouterLink, NearbyActivities, NgxSpinnerComponent],
   templateUrl: './hotel-detailes.html',
   styleUrl: './hotel-detailes.scss',
 
@@ -75,7 +76,9 @@ export class HotelDetailes implements OnInit, OnDestroy {
 
   constructor(
     private _route: ActivatedRoute,
-    private hotelService: HotelData
+    private hotelService: HotelData,
+    private spinner:NgxSpinnerService
+    ,private router:Router
   ) {}
   ngOnInit(): void {
     const sub = this._route.paramMap.subscribe({
@@ -119,6 +122,14 @@ export class HotelDetailes implements OnInit, OnDestroy {
     this.features.set(updateFeatures);
   }
 
+  bookNow(){
+
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+      this.router.navigate(['/booking-page', this.hotelDetails().id]);
+    }, 2000);
+  }
 
   ngOnDestroy(): void {
     this.subscription.forEach((sub?) => sub?.unsubscribe());

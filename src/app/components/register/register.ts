@@ -1,5 +1,11 @@
 import { NgStyle } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -8,18 +14,16 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { FormData } from '../../core/services/form-data';
-import { Logo } from "../logo/logo";
+import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
-  imports: [NgStyle, RouterLink, ReactiveFormsModule, ],
+  imports: [NgStyle, RouterLink, ReactiveFormsModule, NgxSpinnerComponent],
   templateUrl: './register.html',
   styleUrl: './register.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Register implements OnInit {
-
-
   // text-wrap : balance  for style
 
   textWrapBalance = { 'text-wrap': 'balance' };
@@ -31,8 +35,9 @@ export class Register implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    // private _FormData: FormData
-  ) {}
+    private spinner: NgxSpinnerService
+  ) // private _FormData: FormData
+  {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -48,19 +53,29 @@ export class Register implements OnInit {
     });
   }
   register() {
+    this.spinner.show();
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-      localStorage.setItem('user', JSON.stringify(this.registerForm.value));
-      this._FormData.setFormData(this.registerForm.value);
-      this.registerForm.reset();
-      this.accountCreatedSucssfullyMessage.set(true);
-      // this.navigateToLogin();
+      setTimeout(() => {
+        console.log(this.registerForm.value);
+        localStorage.setItem('user', JSON.stringify(this.registerForm.value));
+        this._FormData.setFormData(this.registerForm.value);
+        this.registerForm.reset();
+        this.spinner.hide();
+        this.accountCreatedSucssfullyMessage.set(true);
+      }, 2000);
     } else {
+      this.spinner.hide();
       this.registerForm.markAllAsTouched();
+      alert('Please correct the errors in the form before submitting.');
+
     }
   }
 
   navigateToLogin() {
-    this.router.navigate(['/login']);
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+      this.router.navigate(['/login']);
+    }, 1500);
   }
 }

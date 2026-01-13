@@ -1,0 +1,46 @@
+<div class="container my-5 py-3">
+  <div class="mb-5">
+    <h1 class=" fs-1 fw-bold text-center text-capitalize"
+      [ngStyle]="{'color': 'var(--p-color)', 'text-wrap': 'balance'}">our <span class="term1">lanka</span> Rooms</h1>
+    <p class=" text-center text-capitalize" [ngStyle]="{'color': 'var(--mute-color)'}">Find the perfect stay for your
+      vacation.</p>
+  </div>
+
+
+  <div class="row gy-3">
+    @for (room of roomData(); track $index) {
+    <div class="col-md-6 col-12">
+      <div class="room-card rounded shadow-lg p-3 borderd">
+        <div class="room-title fs-5 mb-2  term2 text-capitalize">
+          {{room.roomType}}
+        </div>
+        <div class="room-img">
+          <img [src]="room.image" alt={{room.roomType}} class="img-fluid">
+        </div>
+        <div class="room-details pt-3 border-bottom ">
+          <div class="d-flex align-items-start justify-content-between flex-wrap">
+            <p class="price-per-night term2 ">
+              From <span class="term1 fs-6"> {{room.price | currency}} </span> / night
+            </p>
+            <div class="icons flex-center gap-2">
+              @for (amenity of room.amenities; track $index) {
+              <img [src]="amenity" alt="" width="22">
+              }
+            </div>
+          </div>
+          <p class="short-desc fs-6 mt-2" [ngStyle]="{'color': 'var(--mute-color)'}">
+            {{room.description}}
+          </p>
+        </div>
+        <div class="flex-center mt-3">
+          <button class="btn text-capitalize px-5 py-2 text-white"
+            [ngStyle]="{'background-color': 'var(--secondary-color)'}" [routerLink]="['/hotels']">Book Now</button>
+        </div>
+      </div>
+
+    </div>
+
+    }
+</div>
+
+</div>
