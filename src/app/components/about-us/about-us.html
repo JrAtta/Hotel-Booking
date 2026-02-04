@@ -1,0 +1,88 @@
+<div class="container my-5 py-3">
+  <div class="mb-5">
+    <h1 class=" fs-1 fw-bold text-center text-capitalize"
+      [ngStyle]="{'color': 'var(--p-color)', 'text-wrap': 'balance'}">about <span class="term1">us</span> </h1>
+    <p class=" text-center text-capitalize" [ngStyle]="{'color': 'var(--mute-color)'}">Where Quality Meets Everyday
+      Comfort.</p>
+  </div>
+
+  <div class="thumbnail mb-5">
+    <div class=" content text-center flex-center flex-column align-items-center  ">
+      <h1 class="title ">timeless <span>elegance,</span> unparalleled hospitality.</h1>
+      <p class="sub-title "> welcome to the lankaStay, where every stay is a masterpiece. </p>
+    </div>
+
+  </div>
+
+  <div class="brand-story mb-5">
+    <h1 class=" fs-3 fw-normal   text-center text-capitalize mb-5  "
+      [ngStyle]="{'color': 'RGBA(2, 0, 63, 10)', 'text-wrap': 'balance'}">our brand story</h1>
+    <p class=" text-center text-capitalize lh-lg" [ngStyle]="{'color': 'var(--mute-color)', 'text-wrap': 'balance'}">
+      LankaStay is a refined hospitality experience where comfort, <span
+        [ngStyle]="{'color':'#FDBB2D',}">elegance,</span> and thoughtful design come together
+      seamlessly. Every space is carefully crafted to create a <span [ngStyle]="{'color':'#FDBB2D',}">calm,</span>
+      welcoming atmosphere <span [ngStyle]="{'color':'#FDBB2D',}"> that feels both personal and
+        effortlesslyluxurious.</span> Guided by attention to
+      detail and genuine care, we focus on delivering meaningful stays
+      that leave a lasting <span [ngStyle]="{'color':'#FDBB2D',}">impression</span> long after the
+      journey ends.
+    </p>
+  </div>
+
+  <div class=" why-choose-us  mb-5 ">
+    <h1 class=" fs-3 fw-normal text-center text-capitalize mb-5"
+      [ngStyle]="{'color': 'RGBA(2, 0, 63, 10)', 'text-wrap': 'balance'}">why choose us</h1>
+
+    <div class="row gy-3 mt-4">
+      @for (card of chooseUsCards(); track $index) {
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+        <div class="card border-0 shadow-lg rounded-4 flex-center flex-column p-3 h-100 gap-2">
+          <img [src]="card.imgSrc" alt="{{card.title}}">
+          <h4 class="title fw-semibold fs-4">{{card.title}}</h4>
+          <P class="text-center desc " [ngStyle]="{'text-wrap': 'balance', 'color': 'var(--mute-color)'}">{{card.desc}}
+          </P>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="our-philosophy ">
+    <h1 class=" fs-3 fw-normal text-center text-capitalize "
+      [ngStyle]="{'color': 'RGBA(2, 0, 63, 10)', 'text-wrap': 'balance', 'margin-bottom': '5rem'}">our philosophy</h1>
+
+    <div class="row gy-3">
+      <div class="col-6 ">
+        <div class="card border-0 d-flex flex-column  gap-5">
+          <div class="image   rounded-5 overflow-hidden ">
+            <img src="/images/happy-waiter.jpg" alt="h-waiter" class="w-100  rounded-5 ">
+          </div>
+          <div class="desc">
+            Our concierge is continue <span class="fw-semibold" [ngStyle]="{'color': '#FDBB2D'}">to his
+              best-itimlo</span> dining
+            entrvarmen our tasufitingy ellewens to sucot our
+            breaalisisting ottimis <span class="fw-semibold" [ngStyle]="{'color': '#FDBB2D'}">carsmoratings sirop, and
+            beautifny</span> and canentien
+
+          </div>
+        </div>
+      </div>
+      <div class="col-6" [ngStyle]="{'transform':'translateY(90px)'}">
+        <div class="card border-0 d-flex flex-column  gap-5">
+          <div class="desc">
+
+            Our concierge is ensuning prothesuriouists in four
+            benefits and <span class="fw-semibold" [ngStyle]="{'color': '#FDBB2D'}">preprseas ve onaise</span> and
+            dernorsting share their natand economic
+            enntentiment of speat <span class="fw-semibold" [ngStyle]="{'color': '#FDBB2D'}">and experience.</span>
+
+          </div>
+          <div class="image rounded-5 overflow-hidden">
+            <img src="/images/table-setting-dinner.jpg" alt="t-set" class="w-100  rounded-4 ">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
