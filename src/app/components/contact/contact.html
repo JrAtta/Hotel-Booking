@@ -1,0 +1,82 @@
+<div class="container my-5">
+  <div class="main-context text-center text-capitalize ">
+    <h1>get <span class="term1">in</span> touch</h1>
+    <p>Questions, feedback, or support?
+      We’re just one message away.</p>
+  </div>
+
+  <article class="border  p-3 flex-center justify-content-start align-items-start gap-4 rounded-4 ">
+    <section class="contact-info  rounded-4 p-4 text-white h-100" [ngStyle]="{'background': 'var(--secondary-color)'}">
+      <div class="contact-text mb-4">
+        <h3 class="fs-4 text-capitalize">contact information</h3>
+        <p class="small" [ngStyle]="{'color': 'var(--placeholder-color)'}">Questions, feedback, or support?
+          We’re just one message away.</p>
+      </div>
+
+      <div class="information ">
+        <div class="call flex-center justify-content-start align-items-start mb-3">
+          <img src="/images/call.svg" alt="call-us" class="me-3" width="30">
+          <div class="details d-flex flex-column gap-1 small">
+            <p class="mb-0">+20 115 782 7847</p>
+            <p>+20 123 456 7890</p>
+          </div>
+        </div>
+
+        <div class="mail flex-center justify-content-start align-items-start mb-3">
+          <img src="/images/mail.svg" alt="mail-us" class="me-3" width="30">
+          <div class="details d-flex flex-column gap-1 small">
+            <p class="mb-0">info@hotelbooking.com</p>
+            <p>support@hotelbooking.com</p>
+          </div>
+        </div>
+
+        <div class="location flex-center justify-content-start align-items-center mb-3">
+          <img src="/images/location.svg" alt="mail-us" class="me-3" width="30">
+          <div class="details d-flex flex-column gap-1 small">
+            <p class="mb-0">New York, USA</p>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+    <section class="form  flex-grow-1 rounded-4  p-4  h-100">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="form-floating mb-5  col-6">
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="Heka Atta ...">
+            <label for="name" class="form-label">Your Name</label>
+          </div>
+
+          <div class="form-floating mb-5  col-6">
+            <input type="email" id="email" class="form-control" formControlName="email" placeholder="heka@atta.com">
+            <label for="email" class="form-label">Your Email</label>
+          </div>
+        </div>
+
+        <div class="form-floating mb-5 ">
+          <input type="text" id="subject" class="form-control" formControlName="subject" placeholder="Subject">
+          <label for="subject" class="form-label">Your Subject</label>
+        </div>
+
+        <div class="form-floating mb-3 ">
+          <textarea id="message" class="form-control" formControlName="message" rows="5" placeholder="Your Message"
+            [ngStyle]="{'height':'110px'}"></textarea>
+          <label for="message" class="form-label">Message</label>
+        </div>
+
+        <button type="submit" class="btn" [ngStyle]="{'background': 'var(--btn-bg)', 'color': 'white'}"
+          [disabled]="contactForm.invalid" (click)="onSubmit()" >Send Message</button>
+      </form>
+    </section>
+  </article>
+
+</div>
+
+
+<!-- Loading Spinner -->
+<ngx-spinner bdColor="rgba(255, 255, 255,.5)" size="medium" color="#152C5B" type="square-jelly-box" [fullScreen]="true">
+  <p>Loading...</p>
+</ngx-spinner>
