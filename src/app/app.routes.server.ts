@@ -6,7 +6,7 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Server
   },
   {
-    path: 'search/hotels/:destination/:personsCount/:startDate/:endDate',
+    path: 'activity-details/:id',
     renderMode: RenderMode.Server
   },
   {
