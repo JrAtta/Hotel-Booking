@@ -64,12 +64,13 @@
       }
 
       @media (max-width: 992px) {
-
         .sub-title {
           font-size: 16px;
           width: 96%;
         }
-
+    .features {
+          transform: translateY(-15px);
+        }
 
       }
 
@@ -128,6 +129,7 @@
       width: 50%;
       height: 450px;
       margin-bottom: 40px;
+      transition: all .3s linear;
 
       .banner-shadow {
         position: relative;
@@ -170,7 +172,10 @@
 
       @media (max-width: 992px) {
         width: 66%;
-
+        transform: translate(35px, 30px);
+      }
+      @media (max-width: 780px) {
+        transform: translate(0px);
       }
 
     }
